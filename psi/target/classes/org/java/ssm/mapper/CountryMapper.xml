@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.CountryMapper">
+	<resultMap id="BaseResultMap" type="org.java.ssm.entity.Country">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="countryname" property="countryname" jdbcType="VARCHAR" />
+		<result column="countrycode" property="countrycode" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, countryname, countrycode
+	</sql>
+
+	<!-- 定义查询的sql片段 -->
+	<sql id="query_country_where">
+		<where>
+			<!-- 使用动态sql，通过if判断，满足条件的进行sql拼接 -->
+			<if test="countryBean!=null">
+				<if test="countryBean.id!=null">
+					and c.id = #{countryBean.id}
+				</if>
+				<if test="countryBean.countryname!=null and countryBean.countryname!=''">
+					and c.countryname like '%${countryBean.countryname}%'
+				</if>
+				<if test="countryBean.countrycode!=null and countryBean.countrycode!=''">
+					and c.countrycode like '%${countryBean.countrycode}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	<!-- 
+		parameterType:传入包装对象（封装了查询条件）
+		为了防止在以后数据表中会添加新的字段resultType建议使用扩展对象
+	 -->
+	<select id="findCountryByPage" resultType="org.java.ssm.bean.CountryBean"
+		parameterType="org.java.ssm.vo.CountryQueryVo">
+		select c.* from country c <include refid="query_country_where" /> order by c.id desc
+	</select>
+
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from country
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from country
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="org.java.ssm.entity.Country">
+		insert into country (id, countryname, countrycode
+		)
+		values (#{id,jdbcType=INTEGER}, #{countryname,jdbcType=VARCHAR},
+		#{countrycode,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="org.java.ssm.entity.Country">
+		insert into country
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="countryname != null">
+				countryname,
+			</if>
+			<if test="countrycode != null">
+				countrycode,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="countryname != null">
+				#{countryname,jdbcType=VARCHAR},
+			</if>
+			<if test="countrycode != null">
+				#{countrycode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.Country">
+		update country
+		<set>
+			<if test="countryname != null">
+				countryname = #{countryname,jdbcType=VARCHAR},
+			</if>
+			<if test="countrycode != null">
+				countrycode = #{countrycode,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.Country">
+		update country
+		set countryname = #{countryname,jdbcType=VARCHAR},
+		countrycode = #{countrycode,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
