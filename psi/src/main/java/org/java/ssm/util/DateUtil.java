@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.time.DateFormatUtils;
+
 
 public class DateUtil {
     private static String ymdhms = "yyyy-MM-dd HH:mm:ss";
@@ -129,7 +131,7 @@ public class DateUtil {
 
     /**
      * 获取今天的日期
-     * 格式：20141202
+     * 格式：20170505
      * @return String
      */
     public static String getTodateString() {
@@ -419,6 +421,9 @@ public class DateUtil {
     
     //测试时使用
     public static void main(String[] args) {
-    	
+    	//System.out.println(getCurrentYear());
+    	System.out.println(getTodateString());
+    	System.out.println("++++++++++++++++++++++++++");
+    	System.out.println(DateFormatUtils.format(new Date(), "yyyyMMdd"));
 	}
 }

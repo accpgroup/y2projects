@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+	<!-- 配置全局settings 根据需要添加-->
+	<!-- <settings></settings> -->
+	
+	<!-- 配置别名 -->
+	<typeAliases>
+		<package name="org.java.ssm.entity"/>
+	</typeAliases>
+	
+	<plugins>
+		<!-- 配置分页插件 -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+           <!--  支持通过Mapper接口参数来传递分页参数 -->
+            <property name="supportMethodsArguments" value="true"/>
+            <property name="rowBoundsWithCount" value="true"/>
+        </plugin>
+    </plugins>
+</configuration>

@@ -48,6 +48,6 @@
 	<!-- 切面 -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice"
-			pointcut="execution(* org.java.*.service.*.*.*(..))" />
+			pointcut="execution(* org.java.*.*.*.*.*(..))" />
 	</aop:config>
 </beans>
