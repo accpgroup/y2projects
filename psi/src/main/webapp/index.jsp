@@ -17,11 +17,11 @@
 -->
 </head>
 <body>
-	<%-- <jsp:forward page="first.htm"></jsp:forward> --%>
+	<jsp:forward page="first.htm"></jsp:forward>
 	<!--  -->
-	<h1>测试</h1>
+	<%-- <h1>测试</h1>
 	<a href="<%=basePath %>test/load.do">进入控制器</a><br>
 	<a href="<%=basePath %>test/testJsonPage.do">测试Json</a><br>
-	<a href="<%=basePath %>sysCodeRule/getCode.do">测试获取编码</a><br>
+	<a href="<%=basePath %>sysCodeRule/getCode.do">测试获取编码</a><br> --%>
 </body>
 </html>
