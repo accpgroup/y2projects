@@ -33,7 +33,7 @@
 				<li><a href="#" class="sidebar-nav-submenu"><i
 						class="fa fa-chevron-left sidebar-nav-indicator"></i>订单管理</a>
 					<ul>
-						<li><a href="page_ready_blank.html">订货单</a></li>
+						<li><a href="test/email.do" target="mainFrm">订货单</a></li>
 						<li><a href="page_ready_error.html">退货单</a></li>
 					</ul></li>
 				<li><a href="#" class="sidebar-nav-submenu"><i

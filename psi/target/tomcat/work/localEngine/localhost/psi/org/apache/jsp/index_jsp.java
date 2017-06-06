@@ -71,18 +71,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("\t");
+      if (true) {
+        _jspx_page_context.forward("first.htm");
+        return;
+      }
       out.write("\r\n");
       out.write("\t<!--  -->\r\n");
-      out.write("\t<h1>测试</h1>\r\n");
-      out.write("\t<a href=\"");
-      out.print(basePath );
-      out.write("test/load.do\">进入控制器</a><br>\r\n");
-      out.write("\t<a href=\"");
-      out.print(basePath );
-      out.write("test/testJsonPage.do\">测试Json</a><br>\r\n");
-      out.write("\t<a href=\"");
-      out.print(basePath );
-      out.write("sysCodeRule/test.do\">测试获取编码</a><br>\r\n");
+      out.write("\t");
+      out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {

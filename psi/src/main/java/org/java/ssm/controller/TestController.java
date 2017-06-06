@@ -26,6 +26,14 @@ public class TestController {
 	@Autowired
 	private CountryService service;
 	
+	@RequestMapping("/email.do")
+	public String showPage() {
+		
+		System.out.println("++++++++++++++++++++");
+		
+		return "/test/email";
+	}
+	
 	//显示编辑页面
 	/*@RequestMapping("/delCountry/{id}")
 	public ModelAndView editCountry(@PathVariable Integer id){

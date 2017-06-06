@@ -11,9 +11,5 @@
 	<context:component-scan base-package="org.java.ssm.*">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
-    </context:component-scan> 
-  
-    <!-- 启用autowire -->  
-    <context:annotation-config />  
-     	
+    </context:component-scan>	
 </beans>

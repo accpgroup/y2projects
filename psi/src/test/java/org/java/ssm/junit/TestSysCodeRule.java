@@ -34,7 +34,7 @@ public class TestSysCodeRule extends BaseSpringTestCase {
 		 * String code = mapper.getCodeByTabName("client");
 		 * System.out.println("编码"+code);
 		 */
-		List<Map<String, Object>> list = mapper.findSysCodeRules("client");
+		List<Map<String, Object>> list = mapper.findSysCodeRules("order");
 		if (list.isEmpty() || list.size() != 1) {
 			throw new RuntimeException("不能生成编码");
 		}
