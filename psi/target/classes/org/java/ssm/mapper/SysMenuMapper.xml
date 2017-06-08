@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.SysMenuMapper">
+	<!-- 查询所有 -->
+  	<select id="findAllSysMenu" resultType="java.util.HashMap">
+  		select * from sys_menu order by sort desc
+ 	</select>
+ 	
+ 	<select id="findMenuModel" resultType="String">
+ 		select menuModule from sys_menu order by sort asc
+ 	</select>
+ 	
+ 	<select id="findMenuModels" resultType="java.util.HashMap">
+ 		select menuModule,menuPrivilege from sys_menu order by sort desc
+ 	</select>
+</mapper>

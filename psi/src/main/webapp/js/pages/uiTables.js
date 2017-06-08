@@ -8,20 +8,20 @@ var UiTables = function() {
 
     return {
         init: function() {
-            /* Initialize Bootstrap Datatables Integration */
+            /* 初始化引导datatable中集成 */
             App.datatables();
 
-            /* Initialize Datatables */
+            /* 初始化的datatable */
             $('#example-datatable').dataTable({
                 columnDefs: [ { orderable: false, targets: [ 4 ] } ],
                 pageLength: 10,
                 lengthMenu: [[5, 10, 20], [5, 10, 20]]
             });
 
-            /* Add placeholder attribute to the search input */
+            /* 占位符属性添加到搜索输入 */
             $('.dataTables_filter input').attr('placeholder', 'Search');
 
-            /* Select/Deselect all checkboxes in tables */
+            /* 表中选择/取消选择所有复选框 */
             $('thead input:checkbox').click(function() {
                 var checkedStatus   = $(this).prop('checked');
                 var table           = $(this).closest('table');
@@ -31,7 +31,7 @@ var UiTables = function() {
                 });
             });
 
-            /* Table Styles Switcher */
+            /* 表样式切换器 */
             var genTable        = $('#general-table');
             var styleBorders    = $('#style-borders');
 

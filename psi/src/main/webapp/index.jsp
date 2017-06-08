@@ -23,5 +23,6 @@
 	<a href="<%=basePath %>test/load.do">进入控制器</a><br>
 	<a href="<%=basePath %>test/testJsonPage.do">测试Json</a><br>
 	<a href="<%=basePath %>sysCodeRule/getCode.do">测试获取编码</a><br> --%>
+	<%-- <a href="<%=basePath %>login.htm">测试进入登录页面</a> --%>
 </body>
 </html>

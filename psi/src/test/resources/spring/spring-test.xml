@@ -10,5 +10,6 @@
 	<import resource="classpath:spring/spring-jdbc.xml"/>
 	<import resource="classpath:spring/spring-mybatis.xml"/>
 	
-	<bean id="date" class="java.util.Date"/>
+	<!-- 用来测试Spring+junit单元测试的 -->
+	<!-- <bean id="date" class="java.util.Date"/> -->
 </beans>

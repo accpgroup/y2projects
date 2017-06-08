@@ -8,7 +8,7 @@
 
 	<!-- 配置注解 -->
 	<context:annotation-config/>
-	<context:component-scan base-package="org.java.ssm.*">
+	<context:component-scan base-package="org.java.ssm">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
     </context:component-scan>	

@@ -17,8 +17,8 @@
 <body>
 	<ul class="sidebar-nav">
 		<!--<li>
-									<a href="index.html" class=" active"><i class="gi gi-compass sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
-								</li>-->
+				<a href="index.html" class=" active"><i class="gi gi-compass sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
+			</li>-->
 		<!--导航栏的分割点 ...   -->
 		<li class="sidebar-separator"><i class="fa fa-ellipsis-h"></i></li>
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 在spring配置shiro过滤器工厂Bean -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 定义过滤器链 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/logout.do=logout
+				/head/**=anon
+				/css/**=anon
+				/js/**=anon
+				/img/**=anon
+				/**=authc
+			</value>
+		</property>
+		<!-- 安全管理 -->
+		<property name="securityManager" ref="securityManager"/>
+		<!-- 用户登录的请求地址 -->
+		<property name="loginUrl" value="/login.htm"/>
+		
+	</bean>
+	
+	<!-- 创建shiro的安全管理器securityManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!-- 加入用户自定义的realm -->
+		<property name="realm" ref="customRealm"/>
+	</bean>
+	
+	<!-- 配置用户自定义的realm -->
+	<bean id="customRealm" class="org.java.ssm.shiro.CustomRealm"/>
+	
+	<!-- 注册Ehcache缓存管理器 -->
+	
+	<!-- 注册异常处理器 -->
+</beans>

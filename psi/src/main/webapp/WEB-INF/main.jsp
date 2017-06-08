@@ -96,7 +96,11 @@
 						<!-- Sidebar Content -->
 						<div class="sidebar-content">
 							<!-- 侧边栏导航 -->
-							<jsp:include page="menu.jsp"/>
+							<%-- <jsp:include page="menu.jsp"/> --%>
+							
+							
+							<!-- 这是测试从数据库加载菜单 -->
+							<jsp:include page="test/testMenu.jsp"/>
 							<!-- 侧边栏导航结束 -->
 
 							<!-- 皮肤主题 -->
@@ -138,22 +142,10 @@
 				<!-- Main Container -->
 				<div id="main-container">
 					<!-- Header -->
-					<!-- In the PHP version you can set the following options from inc/config file -->
-					<!--
-                        Available header.navbar classes:
-
-                        'navbar-default'            for the default light header
-                        'navbar-inverse'            for an alternative dark header
-
-                        'navbar-fixed-top'          for a top fixed header (fixed main sidebar with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar())
-                            'header-fixed-top'      has to be added on #page-container only if the class 'navbar-fixed-top' was added
-
-                        'navbar-fixed-bottom'       for a bottom fixed header (fixed main sidebar with scroll will be auto initialized, functionality can be found in js/app.js - handleSidebar()))
-                            'header-fixed-bottom'   has to be added on #page-container only if the class 'navbar-fixed-bottom' was added
-                    -->
 					<header class="navbar navbar-inverse navbar-fixed-top">
 						<!-- 头部信息 -->
 						<jsp:include page="header.jsp"/>
+						
 					</header>
 					<!-- END Header -->
 

@@ -2,7 +2,6 @@ package org.java.ssm.junit;
 
 import org.java.ssm.entity.Country;
 import org.java.ssm.mapper.CountryMapper;
-import org.java.ssm.service.CountryService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
