@@ -119,4 +119,13 @@ public class TestController {
 		
 		return mv;
 	}
+	
+	
+	//进入入库单页面
+	///杨飞
+	@RequestMapping("/rukudan.do")
+	public String ruku(){
+		System.out.println("进来了");
+		return "/repository/rukudan";
+	}
 }

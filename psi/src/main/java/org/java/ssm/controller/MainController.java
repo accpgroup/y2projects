@@ -29,6 +29,7 @@ public class MainController {
 	//进入首页
 	@RequestMapping("/first.htm")
 	public ModelAndView first(){
+		
 		ModelAndView mv = new ModelAndView("/main");
 		
 		System.out.println("用户认证成功");
@@ -55,10 +56,6 @@ public class MainController {
 		for (String key : menuModelMap.keySet()) {
 			System.out.println(key);
 		}
-		
-		
-
-		
 		return mv;
 	}
 

@@ -50,7 +50,7 @@
 											<ul>
 											<c:forEach items="${requestScope.menuMap }" var="m3">
 												<c:if test="${m3.menuModule==m2.menuPrivilege && m3.menuModule==m3.supSubMenu}">
-													<li><a href="${m3.url }">${m3.menuName }</a></li>
+													<li><a href="${m3.url }" target="${m3.target}">${m3.menuName }</a></li>
 												</c:if>
 											</c:forEach>
 											</ul>
