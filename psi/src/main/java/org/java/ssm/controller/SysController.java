@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/sys")
 public class SysController {
 	
+	
 	//显示系统设置的主页面
 	@RequestMapping("/sys_main.htm")
 	public String sysMain() {

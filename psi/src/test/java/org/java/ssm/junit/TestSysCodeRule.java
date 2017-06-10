@@ -34,7 +34,7 @@ public class TestSysCodeRule extends BaseSpringTestCase {
 		 * String code = mapper.getCodeByTabName("client");
 		 * System.out.println("编码"+code);
 		 */
-		List<Map<String, Object>> list = mapper.findSysCodeRules("order");
+		List<Map<String, Object>> list = mapper.findSysCodeRules("in_money_recorde");
 		if (list.isEmpty() || list.size() != 1) {
 			throw new RuntimeException("不能生成编码");
 		}
@@ -77,7 +77,7 @@ public class TestSysCodeRule extends BaseSpringTestCase {
 
 			// * 获取系统的当前日期、
 			String sysCurDate = DateUtil.getTodateString();
-			// * 如果代码规则表中的当前日期字段的值==系统的当前日期、
+			// * 如果代码规则表中的当前日期字段的值==系统的当前日期
 			if (curDate.equals(sysCurDate)) {
 				// * 获取下一个序列号 ="002"
 				String nextseq = (String) sysCodeRule.get("nextseq");
@@ -86,7 +86,7 @@ public class TestSysCodeRule extends BaseSpringTestCase {
 				String nextGlideNumber = DataConvertUtil.getNextGlideNumber(nextseq);
 
 				// * 生成编码
-				// * 编码前缀+"-"+利用日期位格式生成当前的日期[yyyy-MM-dd ]+"-"+001
+				// * 编码前缀+"-"+利用日期位格式生成当前的日期[yyyy-MM-dd]+"-"+001
 				String code = sysCodeRule.get("areaPrefix") + "-"
 						+ DateFormatUtils.format(new Date(), (String) sysCodeRule.get("areaTime")) + "-" + nextseq;
 				// * 修改代码规则表
@@ -124,6 +124,5 @@ public class TestSysCodeRule extends BaseSpringTestCase {
 				System.out.println("需要返回页面显示的编号："+ code);
 			}
 		}
-
 	}
 }

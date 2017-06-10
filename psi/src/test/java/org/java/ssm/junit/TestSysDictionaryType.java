@@ -23,7 +23,7 @@ public class TestSysDictionaryType extends BaseSpringTestCase{
 	//测试成功
 	@Test
 	public void findSysDictionaryTypeByCode(){
-		List<Map<String, Object>> list =  mapper.findSysDictionaryTypeByCode("source");
+		List<Map<String, Object>> list =  mapper.findSysDictionaryTypeByCode("in_money_state");
 		System.out.println("结果集的大小："+list.size());
 		for (Map<String, Object> map : list) {
 			System.out.println(map.get("value"));
