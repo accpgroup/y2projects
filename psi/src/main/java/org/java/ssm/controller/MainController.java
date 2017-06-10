@@ -18,8 +18,7 @@ public class MainController {
 	//进入首页
 	@RequestMapping("/first.htm")
 	public ModelAndView first(){
-		System.out.println("进来了");
-		return new ModelAndView("/repository/rukudan");
+		return new ModelAndView("/main");
 	}
 
 }
