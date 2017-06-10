@@ -22,6 +22,14 @@ var ReadyDashboard = function() {
                     }
                 });
             });
+            /*自己添加 */
+            $(window).on('resize', function() {
+				var $content = $('#page-content');
+				$content.height($(this).height()-147);// - 147
+				$content.find('iframe').each(function() {
+					$(this).height($content.height());
+				});
+			}).resize();
 
             /* Mini Line Charts with jquery.sparkline plugin, for more examples you can check out http://omnipotent.net/jquery.sparkline/#s-about */
             var widgetChartLineOptions = {

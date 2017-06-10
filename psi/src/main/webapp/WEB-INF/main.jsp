@@ -6,7 +6,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html >
+<!DOCTYPE html ><!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> -->
 <html class="no-js" lang="en">
 <head>
 	<meta charset="utf-8">
@@ -19,7 +19,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<jsp:include page="common.jsp" flush="true"/>
+	<jsp:include page="/common.jsp" flush="true"/>
 	
 </head>
 <body>
@@ -160,6 +160,8 @@
 					<!-- Page content -->
 					<div id="page-content">
 						<!-- 内容 -->
+						<!-- onload="setIframeHeight(this)height: auto;" -->
+						<iframe style="width: 100%;" src="" onload="setIframeHeight(this)" name="mainFrm" id="mainFrm" frameborder="0"></iframe>						
 					</div>
 					<!-- END Page Content -->
 				</div>

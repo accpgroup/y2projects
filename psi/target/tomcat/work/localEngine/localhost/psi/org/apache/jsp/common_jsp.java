@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class common_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -50,8 +50,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write('\r');
-      out.write('\n');
+      out.write("<!-- 公用的文件 -->\r\n");
+      out.write("\r\n");
 
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -59,28 +59,53 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 			+ path + "/";
 
       out.write("\r\n");
+      out.write("<!-- 图标 -->\r\n");
+      out.write("<!-- 下面的图标可以替换为你自己的,他们所使用的桌面和移动浏览器 -->\r\n");
+      out.write("<link rel=\"shortcut icon\" href=\"");
+      out.print(basePath );
+      out.write("img/favicon.png\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon57.png\" sizes=\"57x57\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon72.png\" sizes=\"72x72\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon76.png\" sizes=\"76x76\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon114.png\" sizes=\"114x114\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon120.png\" sizes=\"120x120\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon144.png\" sizes=\"144x144\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon152.png\" sizes=\"152x152\">\r\n");
+      out.write("<link rel=\"apple-touch-icon\" href=\"");
+      out.print(basePath );
+      out.write("img/icon180.png\" sizes=\"180x180\">\r\n");
       out.write("\r\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
-      out.write("<html>\r\n");
-      out.write("<head>\r\n");
-      out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("<title>Insert title here</title>\r\n");
-      out.write("<!--\r\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\r\n");
-      out.write("-->\r\n");
-      out.write("</head>\r\n");
-      out.write("<body>\r\n");
-      out.write("\t");
-      if (true) {
-        _jspx_page_context.forward("first.htm");
-        return;
-      }
+      out.write("<link rel=\"stylesheet\" href=\"");
+      out.print(basePath );
+      out.write("css/bootstrap.min.css\">\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"");
+      out.print(basePath );
+      out.write("css/plugins.css\">\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"");
+      out.print(basePath );
+      out.write("css/main.css\">\r\n");
+      out.write("<link rel=\"stylesheet\" href=\"");
+      out.print(basePath );
+      out.write("css/themes.css\">\r\n");
+      out.write("<script src=\"");
+      out.print(basePath );
+      out.write("js/vendor/modernizr-3.3.1.min.js\"></script>\r\n");
       out.write("\r\n");
-      out.write("\t<!--  -->\r\n");
-      out.write("\t");
       out.write("\r\n");
-      out.write("</body>\r\n");
-      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
