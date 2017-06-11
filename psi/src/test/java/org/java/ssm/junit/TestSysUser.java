@@ -59,4 +59,27 @@ public class TestSysUser extends BaseSpringTestCase{
 		
 		mapper.insert(user);
 	}
+	
+	
+	//添加系统的用户
+	public void insertSysUser() {
+		SysUser user = new SysUser();
+		
+		user.setName("zz");//登录账号 输入
+		user.setPassword("123456");//登录密码 输入
+		user.setCnname("周壮");//姓名 输入
+		user.setTelephone("");//手机号 输入
+		//部门 下拉框选择
+		//职位 输入
+		//部门负责人
+		//Email
+		//QQ
+		
+		
+		// 暂时先不测试权限
+		//
+		
+		
+	}
+	
 }

@@ -18,6 +18,10 @@ public class SysRole implements Serializable{
     private String name;
 
     private String remark;
+    @Override
+    public String toString() {
+    	return "id="+id+",name="+name+",remark="+remark;
+    }
 
     public Integer getId() {
         return id;

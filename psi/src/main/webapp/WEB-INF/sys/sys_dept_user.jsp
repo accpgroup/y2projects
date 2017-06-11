@@ -20,8 +20,7 @@
 <meta name="author" content="pixelcave">
 <meta name="robots" content="noindex, nofollow">
 
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <jsp:include page="/common.jsp" />
 </head>
 <body>
@@ -61,6 +60,7 @@
 					<!-- Tabs Content -->
 					<div class="tab-content">
 						<div class="tab-pane active" id="block-tabs-ygcode">
+							<button><a href="<%=basePath %>company_user/add.htm">新增</a></button>
 							<!-- Datatables Block -->
 							<!-- Datatables is initialized in <%=basePath%>js/pages/uiTables.js -->
 							<div class="block full">
@@ -275,7 +275,11 @@
 						
 						
 						
-						<div class="tab-pane" id="block-tabs-role-limits-settings">显示设置角色权限的信息</div>
+						<div class="tab-pane" id="block-tabs-role-limits-settings">
+							<a href="<%=basePath %>role/edit.htm">修改员工信息</a>
+						
+						
+						</div>
 					</div>
 					<!-- END Tabs Content -->
 				</div>

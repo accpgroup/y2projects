@@ -42,9 +42,11 @@
 				class="fa fa-cog"></i>
 		</a>
 			<ul class="dropdown-menu dropdown-menu-right">
-				<li><a href="sys/basic_info.htm"> <i
+				<li>
+					<a href="sys/basic_info.htm"> <i
 						class="fa fa-exclamation-circle fa-fw pull-right"></i> 基础资料
-				</a></li>
+					</a>
+				</li>
 
 				<li><a href="sys/assist_info.htm"> <i
 						class="fa fa-pencil-square-o fa-fw pull-right"></i> 辅助资料
@@ -65,8 +67,9 @@
 
 		<!-- 用户下拉 -->
 		<li class="dropdown"><a href="javascript:void(0)"
-			class="dropdown-toggle" data-toggle="dropdown"> <!--显示用户图片--> <img
-				src="img/placeholders/avatars/avatar9.jpg" alt="avatar">
+			class="dropdown-toggle" data-toggle="dropdown">
+			<!--显示用户图片-->
+			<img src="img/placeholders/avatars/avatar9.jpg" alt="avatar">
 		</a>
 			<ul class="dropdown-menu dropdown-menu-right">
 				<li class="dropdown-header"><strong>管理人：<span>${requestScope.username }</span></strong>
@@ -80,17 +83,24 @@
 				</a></li>
 				<li class="divider">
 				<li>
-				<li><a href="javascript:void(0)"
-					onclick="App.sidebar('toggle-sidebar-alt');"> <i
+				
+				<li>
+					<a href="javascript:void(0)"
+						onclick="App.sidebar('toggle-sidebar-alt');"> <i
 						class="gi gi-settings fa-fw pull-right"></i> 设置
-				</a></li>
+					</a>
+				</li>
+				
 				<li><a href="page_ready_lock_screen.html"> <i
 						class="gi gi-lock fa-fw pull-right"></i> 锁屏
 				</a></li>
+				
 				<li><a href="logout.do"> <i
 						class="fa fa-power-off fa-fw pull-right"></i> 退出
-				</a></li>
-			</ul></li>
+				</a>
+				</li>
+			</ul>
+			</li>
 		<!-- 最终用户下拉 -->
 	</ul>
 	<!-- 最终正确的标题导航 -->

@@ -11,15 +11,45 @@ import org.java.ssm.entity.SysRole;
  *
  */
 public interface SysRoleMapper {
+	/**
+	 * @Title:  deleteByPrimaryKey
+	 * @Description: 根据主键ID删除角色信息
+	 * @param id
+	 * @return int
+	 */
     int deleteByPrimaryKey(Integer id);
+    
+    /**
+     * @Title:  insert
+     * @Description: 添加角色信息
+     * @param record
+     * @return int
+     */
+    int insert(SysRole role);
+    
+    /**
+     * @Title:  insertSelective
+     * @Description:  添加一条角色信息，只添加不为null的字段
+     * @param role
+     * @return int
+     */
+    int insertSelective(SysRole role);
 
-    int insert(SysRole record);
-
-    int insertSelective(SysRole record);
-
+    /**
+     * @Title:  selectByPrimaryKey
+     * @Description: 根据主键来查询角色信息 
+     * @param id
+     * @return SysRole
+     */
     SysRole selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(SysRole record);
-
-    int updateByPrimaryKey(SysRole record);
+    int updateByPrimaryKeySelective(SysRole role);
+    
+    /**
+     * @Title:  updateByPrimaryKey
+     * @Description: 根据主键更新角色信息 
+     * @param role
+     * @return int
+     */
+    int updateByPrimaryKey(SysRole role);
 }

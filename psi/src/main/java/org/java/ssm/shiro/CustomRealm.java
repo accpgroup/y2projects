@@ -33,6 +33,7 @@ public class CustomRealm extends AuthorizingRealm {
 	}
 
 	//认证
+	@SuppressWarnings("null")
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		
@@ -42,7 +43,7 @@ public class CustomRealm extends AuthorizingRealm {
 		System.out.println("前台取到的用户名："+principal);
 		
 		Map<String, Object> userMap = service.login(principal);
-		if (userMap!=null && userMap.size()==1) {
+		if (userMap==null && userMap.size()!=1) {
 			System.out.println("用户名不存在");
 			return null;
 		}else{
