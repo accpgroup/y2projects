@@ -1,22 +1,22 @@
 /*
- * 文档:app.js
- * 作者:pixelcave
- * 描述:自定义脚本和插件的初始化(所有页)
+ *  Document   : app.js
+ *  Author     : pixelcave
+ *  Description: Custom scripts and plugin initializations (available to all pages)
  *
- * 随时删除插件initilizations uiInit()如果你想
- * 使用它们只在特定的页面。还有,如果你删除一个js插件你不会使用,
- * 确保从uiInit删除它的初始化()。
+ *  Feel free to remove the plugin initilizations from uiInit() if you would like to
+ *  use them only in specific pages. Also, if you remove a js plugin you won't use, make
+ *  sure to remove its initialization from uiInit().
  */
 
 var App = function() {
 
-    /* 辅助变量,设置在uiInit() */
+    /* Helper variables - set in uiInit() */
     var page, pageContent, header, sidebar, sBrand, sExtraInfo, sidebarAlt, sScroll, sScrollAlt;
 
     /* Initialization UI Code */
     var uiInit = function() {
 
-        // 设置变量——缓存一些经常使用Jquery对象变量 */
+        // Set variables - Cache some often used Jquery objects in variables */
         page            = $('#page-container');
         header          = $('header');
         pageContent     = $('#page-content');
@@ -29,16 +29,16 @@ var App = function() {
         sidebarAlt      = $('#sidebar-alt');
         sScrollAlt      = $('#sidebar-scroll-alt');
 
-        // 颜色主题预览功能
+        // Color Theme Preview functionality
         colorThemePreview();
 
-        // 初始化侧边栏功能
+        // Initialize sidebars functionality
         handleSidebar('init');
 
-        // 侧边栏导航功能
+        // Sidebar navigation functionality
         handleNav();
 
-        // 头对滚动玻璃的影响
+        // Header glass effect on scrolling
         if ((header.hasClass('navbar-fixed-top') || header.hasClass('navbar-fixed-bottom'))) {
             $(window).on('scroll', function(){
                 if ($(this).scrollTop() > 50) {
@@ -49,29 +49,29 @@ var App = function() {
             });
         }
 
-        // 如果存在调整#页面内容来填补空白
+        // Resize #page-content to fill empty space if exists
         $(window).on('resize orientationchange', function(){ resizePageContent(); }).resize();
 
-        // 添加正确的版权
+        // Add the correct copyright year
         var yearCopy = $('#year-copy'), d = new Date();
         if (d.getFullYear() === 2014) { yearCopy.html('2014'); } else { yearCopy.html('2014-' + d.getFullYear().toString().substr(2,2)); }
 
-        // 在按钮Intialize涟漪效应
+        // Intialize ripple effect on buttons
         rippleEffect($('.btn-effect-ripple'), 'btn-ripple');
 
-        // 初始化标签
+        // Initialize Tabs
         $('[data-toggle="tabs"] a, .enable-tabs a').click(function(e){ e.preventDefault(); $(this).tab('show'); });
 
-        // 初始化提示
+        // Initialize Tooltips
         $('[data-toggle="tooltip"], .enable-tooltip').tooltip({container: 'body', animation: false});
 
-        // 初始化弹窗
+        // Initialize Popovers
         $('[data-toggle="popover"], .enable-popover').popover({container: 'body', animation: true});
 
-        // 初始化图像Lightbox
+        // Initialize Image Lightbox
         $('[data-toggle="lightbox-image"]').magnificPopup({type: 'image', image: {titleSrc: 'title'}});
 
-        // 初始化图像画廊lightbox
+        // Initialize image gallery lightbox
         $('[data-toggle="lightbox-gallery"]').each(function(){
             $(this).magnificPopup({
                 delegate: 'a',

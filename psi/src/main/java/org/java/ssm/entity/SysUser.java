@@ -1,9 +1,15 @@
 package org.java.ssm.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SysUser {
-    private Integer id;
+public class SysUser implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
 
     private String creator;
 

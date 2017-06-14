@@ -57,7 +57,7 @@
 				</a></li>
 
 				<li>
-				<a href="sys/operate_log.htm" target="mainFrm">
+				<a href="<%=basePath%>sys/operate_log.htm" target="mainFrm">
 					<i class="fa fa-book fa-fw pull-right"></i> 操作日志
 				</a>
 				</li>

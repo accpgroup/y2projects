@@ -22,12 +22,15 @@ var ReadyDashboard = function() {
                     }
                 });
             });
+            
             /*自己添加 */
             $(window).on('resize', function() {
 				var $content = $('#page-content');
-				$content.height($(this).height()-147);// - 147
+				//alert($(this).height()- 147);
+				$content.height($(this).height() - 147);// - 147
 				$content.find('iframe').each(function() {
-					$(this).height($content.height());
+					$(this).height($content.height()-1);/*$content.height()*/
+//					alert($(this).height());
 				});
 			}).resize();
 

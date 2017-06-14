@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.java.ssm.entity.SysUser;
+import org.java.ssm.vo.SysUserQueryVo;
 
 /**
  * 
@@ -14,6 +15,18 @@ import org.java.ssm.entity.SysUser;
  *
  */
 public interface SysUserMapper {
+	
+	
+	List<Map<String, Object>> findAllSysUserByQueryVo(SysUserQueryVo queryVo);
+	
+	
+	/**
+	 * @Title:  findSysUserByQueryVo
+	 * @Description: 多条件带分页查询 
+	 * @param queryVo
+	 * @return List<SysUser>
+	 */
+	List<SysUser> findSysUserByQueryVo(SysUserQueryVo queryVo);
 	
 	/*简单的用户登录没有控制权限*/
 	List<Map<String, Object>> login(String username);
@@ -31,4 +44,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+
+	
 }

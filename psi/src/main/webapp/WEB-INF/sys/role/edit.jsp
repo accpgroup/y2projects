@@ -6,32 +6,54 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html>
-<!--[if IE 9]> <html class="no-js lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>修改员工信息</title>
 
-<meta name="description" content="AppUI is a Web App Bootstrap Admin Template created by pixelcave and published on Themeforest">
-<meta name="author" content="pixelcave">
-<meta name="robots" content="noindex, nofollow">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<jsp:include page="/common.jsp"/>
+<jsp:include page="/common.jsp"/>
+<link rel="stylesheet" href="<%=basePath %>css/layui.css">
+<link rel="stylesheet" href="<%=basePath %>css/use.css">
 </head>
-
 <body style="background-color: white;">
-	从数据库加载的角色信息是：<font color="red">${requestScope.role.name }</font>
-
-	<br/>
-	修改角色信息<button onclick="history.go(-1);">取消</button>
+	<form id="roleFrm">
+		<table border="0" width="80%">
+				<tr>
+					<td width="10%"></td>
+					<td width="40%" colspan="3">
+						<input type="hidden" value="${role.id }">
+					</td>
+				</tr>
+				<tr height="80px">
+					<td align="right"><font color="red">*</font>角色名称&nbsp;&nbsp;</td>
+					<td colspan="3">
+						<input type="text" value="${role.name }" class="form-control" placeholder="请输入角色名称">
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<button class="layui-btn layui-btn-radius use-btn">保存</button>
+						<button class="layui-btn layui-btn-radius layui-btn-primary use-btn">取消</button>
+					</td>
+				</tr>
+		</table>
+	</form>
+	<script src="<%=basePath%>js/vendor/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="<%=basePath %>layer/layer.js"></script>
+	<script type="text/javascript">
+		function update(basePath){
+			$.ajax({
+				url:basePath+"role/updateSysRole.do",
+				type:"post",
+				data:$("#roleFrm").serialize(),
+				dataType:"json",
+				success:function(data){
+					
+				}
+			});
+		}
+	</script>
 </body>
 </html>

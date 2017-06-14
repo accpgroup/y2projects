@@ -1,5 +1,7 @@
 /*
- *  Description: 定制javascript代码中使用的登录页面
+ *  Document   : readyLogin.js
+ *  Author     : pixelcave
+ *  Description: Custom javascript code used in Login page
  */
 
 var ReadyLogin = function() {
@@ -7,15 +9,15 @@ var ReadyLogin = function() {
     return {
         init: function() {
             /*
-             *  Jquery验证,查看更多示例和文档:https://github.com/jzaefferer/jquery-validation
+             *  Jquery Validation, Check out more examples and documentation at https://github.com/jzaefferer/jquery-validation
              */
 
             /* Login form - Initialize Validation */
             $('#form-login').validate({
-                errorClass: 'help-block animation-slideUp', // 你可以改变不同的入口动画的动画类——检查动画页面
+                errorClass: 'help-block animation-slideUp', // You can change the animation class for a different entrance animation - check animations page
                 errorElement: 'div',
                 errorPlacement: function(error, e) {
-                    e.parents('.form-group > div').append(error);//error
+                    e.parents('.form-group > div').append(error);
                 },
                 highlight: function(e) {
                     $(e).closest('.form-group').removeClass('has-success has-error').addClass('has-error');
@@ -26,21 +28,20 @@ var ReadyLogin = function() {
                     e.closest('.help-block').remove();
                 },
                 rules: {
-                    'username': {
+                    'login-email': {
                         required: true,
-                        minlength: 1/*,
-                        email: true*/  /*这里可以用来验证邮箱*/
+                        email: true
                     },
-                    'password': {
+                    'login-password': {
                         required: true,
                         minlength: 5
                     }
                 },
                 messages: {
-                    'username': '用户名不能为空',
-                    'password': {
-                        required: '密码不能空',
-                        minlength: '你的密码必须至少为5个字符'
+                    'login-email': 'Please enter your account\'s email',
+                    'login-password': {
+                        required: 'Please provide your password',
+                        minlength: 'Your password must be at least 5 characters long'
                     }
                 }
             });

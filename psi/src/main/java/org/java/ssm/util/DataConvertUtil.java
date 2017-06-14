@@ -1,6 +1,14 @@
 package org.java.ssm.util;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.lang.StringUtils;
+import org.junit.Test;
 
 /**
  * 数据转换工具类
@@ -11,6 +19,11 @@ import org.apache.commons.lang.StringUtils;
  *
  */
 public class DataConvertUtil {
+	
+	
+	public static List<String> getStringList(Collection<String> collection) {
+		return new ArrayList<>(collection);
+	}
 	
 	/**
 	 * 将字符串数组转换成整形数组
@@ -78,7 +91,21 @@ public class DataConvertUtil {
 		//测试生成流水号
 		//System.out.println(getFirstGlideNumber(4));
 		//测试下一个流水号
-		System.out.println(getNextGlideNumber("002"));
+		//System.out.println(getNextGlideNumber("002"));
+		
+	}
+	@Test
+	public void main() {
+		Map<String , String> map = new HashMap<>();
+		
+		map.put("a", "aaa");
+		map.put("b", "bbb");
+		map.put("c", "ccc");
+		
+		List<String> list =  getStringList(map.values());
+		for (String string : list) {
+			System.out.println(string);
+		}
 	}
 	
 }
