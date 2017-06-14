@@ -11,6 +11,15 @@
   <sql id="Base_Column_List" >
     id, name, remark
   </sql>
+  
+  <select id="findSysRolePermissionByRoleId" parameterType="String" resultType="java.util.HashMap">
+  	SELECT * FROM sys_role_permission WHERE role_id=#{_parameter}
+  </select>
+  
+  <select id="findAllSysRole" resultType="org.java.ssm.entity.SysRole">
+  	 select * from sys_role
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

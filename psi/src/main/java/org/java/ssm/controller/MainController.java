@@ -31,6 +31,7 @@ public class MainController {
 	public ModelAndView first(){
 		
 		ModelAndView mv = new ModelAndView("/main");
+//		ModelAndView mv = new ModelAndView("/test/testMain");
 		
 		System.out.println("用户认证成功");
 		//通过主体获得用户信息

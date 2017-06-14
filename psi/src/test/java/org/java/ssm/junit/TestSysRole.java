@@ -1,11 +1,13 @@
 package org.java.ssm.junit;
 
+import java.util.List;
+import java.util.Map;
+
 import org.java.ssm.entity.SysRole;
 import org.java.ssm.mapper.SysRoleMapper;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import sun.awt.image.IntegerInterleavedRaster;
 
 /**
  * 测试系统角色
@@ -19,6 +21,26 @@ public class TestSysRole extends BaseSpringTestCase{
 	
 	@Autowired
 	private SysRoleMapper mapper;
+	
+	//查询角色与权限的明细表
+	@Test
+	public void findSysRolePermissionByRoleId(){
+		List<Map<String, Object>> list = mapper.findSysRolePermissionByRoleId("1");
+		for (Map<String, Object> map : list) {
+			System.out.println(map.get("permission_id"));
+		}
+	
+	}
+	
+	//查询所有角色
+	@Test
+	public void findAll() {
+		List<SysRole> list = mapper.findAllSysRole();
+		for (SysRole sysRole : list) {
+			System.out.println(sysRole.getName());
+		}
+	}
+	
 	
 	//测试添加用户角色信息
 	@Test

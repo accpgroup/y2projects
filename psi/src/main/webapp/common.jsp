@@ -1,10 +1,9 @@
 <!-- 公用的文件 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!-- 图标 -->
@@ -18,11 +17,12 @@
 <link rel="apple-touch-icon" href="<%=basePath %>img/icon144.png" sizes="144x144">
 <link rel="apple-touch-icon" href="<%=basePath %>img/icon152.png" sizes="152x152">
 <link rel="apple-touch-icon" href="<%=basePath %>img/icon180.png" sizes="180x180">
-
-<link rel="stylesheet" href="<%=basePath %>css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=basePath %>css/plugins.css">
-<link rel="stylesheet" href="<%=basePath %>css/main.css">
-<link rel="stylesheet" href="<%=basePath %>css/themes.css">
+<link rel="stylesheet" href="<%=basePath %>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=basePath %>/css/plugins.css">
+<!-- 主页样式 -->
+<link rel="stylesheet" href="<%=basePath %>/css/main.css">
+<!-- 主题样式 -->
+<link rel="stylesheet" href="<%=basePath %>/css/themes.css">
 <script src="<%=basePath %>js/vendor/modernizr-3.3.1.min.js"></script>
 
 

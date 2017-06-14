@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.SysOperateLogMapper">
+	
+	<sql id="query_log_where">
+		<where>
+			<if test="keywords!=null and keywords!=''">
+				and actionType like '%${keywords}%' or cnname like '%${keywords}%' or userName like '%${keywords}%'
+			</if>
+		</where>
+	</sql>
+	
+	<select id="findAllSysOperateLog" parameterType="org.java.ssm.vo.SysOperateLogQueryVo"
+		resultType="java.util.HashMap">
+		SELECT * FROM sys_operate_log <include refid="query_log_where"/>
+	</select>
+</mapper>

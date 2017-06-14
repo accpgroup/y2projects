@@ -1,5 +1,8 @@
 package org.java.ssm.mapper;
 
+import java.util.List;
+import java.util.Map;
+
 import org.java.ssm.entity.SysRole;
 
 /**
@@ -11,6 +14,10 @@ import org.java.ssm.entity.SysRole;
  *
  */
 public interface SysRoleMapper {
+	
+	List<Map<String, Object>> findSysRolePermissionByRoleId(String roleId);
+	
+	List<SysRole> findAllSysRole();
 	/**
 	 * @Title:  deleteByPrimaryKey
 	 * @Description: 根据主键ID删除角色信息
@@ -52,4 +59,6 @@ public interface SysRoleMapper {
      * @return int
      */
     int updateByPrimaryKey(SysRole role);
+    
+	
 }

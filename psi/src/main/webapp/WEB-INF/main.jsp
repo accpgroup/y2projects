@@ -73,9 +73,8 @@
 				
 					
 					<!-- 包装器滚动功能 -->
-					<div id="sidebar-scroll-alt">
-						<!---->
-					</div>
+					<!-- <div id="sidebar-scroll-alt">
+					</div> -->
 					<!-- END Wrapper for scrolling functionality -->
 				</div>
 				<!-- END Alternative Sidebar -->
@@ -150,10 +149,9 @@
 					<!-- END Header -->
 
 					<!-- Page content -->
-					<div id="page-content">
-						<!-- 内容 -->
-						<!-- onload="setIframeHeight(this)height: auto;" -->
-						<iframe style="width: 100%;" src="" onload="setIframeHeight(this)" name="mainFrm" id="mainFrm" frameborder="0"></iframe>						
+					<div id="page-content" style="border: 0px red solid;padding-right: 10px;">
+						<!-- 内容 -->						
+						<iframe style="width: 100%;height: auto;margin:-8px;" src="index.html"  name="mainFrm" id="mainFrm" frameborder="0"></iframe>
 					</div>
 					<!-- END Page Content -->
 				</div>
