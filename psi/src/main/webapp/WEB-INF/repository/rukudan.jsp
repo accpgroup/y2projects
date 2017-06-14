@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<base href="http://localhost:9999/psi/">
+		<base href="http://localhost:9090/psi/">
         <!-- Appui样式 -->
         <link rel="shortcut icon" href="<%=basePath%>/img/favicon.png">
         <link rel="apple-touch-icon" href="<%=basePath%>/img/icon57.png" sizes="57x57">
@@ -67,7 +67,7 @@
            
            //点击新增按钮
            function addBtn(){
-        	   alert("----------");
+        	   window.location.href="ruku/addRuKuDan.do";
            }
         </script>
 

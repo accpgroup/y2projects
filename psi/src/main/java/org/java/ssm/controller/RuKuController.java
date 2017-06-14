@@ -20,4 +20,11 @@ public class RuKuController {
 		return "/repository/rukudan";
 	}
 	
+    //进入新增入库单页面
+    @RequestMapping("/addRuKuDan.do")
+    public String addRuKuDan(){
+    	System.out.println("进入新增");
+    	return "/repository/addRuKuDan";
+    }
+    
 }
