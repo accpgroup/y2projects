@@ -15,6 +15,7 @@
 <!--
 <link rel="stylesheet" type="text/css" href="styles.css">
 -->
+	<jsp:include page="/common.jsp"></jsp:include>
 </head>
 <body>
 	<ul class="sidebar-nav">
