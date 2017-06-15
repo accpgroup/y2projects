@@ -41,7 +41,10 @@ td div {
 	line-height:25px;
 	text-align:left;
 }
-a{text-decoration: none;}
+/* a{text-decoration: none;}
+i:HOVER {
+	color: #13C19F;
+} */
 -->
 </style>
 </head>
@@ -51,15 +54,15 @@ a{text-decoration: none;}
 		<!-- 预紧器 -->
 		<!-- 预紧器功能(初始化在js / app.js)-新() -->
 		<!-- Used only if page preloader enabled from inc/config (PHP version) or the class 'page-loading' is added in #page-wrapper element (HTML version) -->
-		<div class="preloader">
+		<!-- <div class="preloader">
 		    <div class="inner">
-		        <!-- 所有现代浏览器动画转轮 -->
+		    	所有现代浏览器动画转轮
 		        <div class="preloader-spinner themed-background hidden-lt-ie10"></div>
 		
-		        <!-- Text for IE9 -->
+		        Text for IE9
 		        <h3 class="text-primary visible-lt-ie10"><strong>Loading..</strong></h3>
 		    </div>
-		</div>
+		</div> -->
 		<!-- END Preloader -->
 
 		<div id="page-container" class="sidebar-visible-lg-full"style="background-color: white;">
@@ -75,7 +78,7 @@ a{text-decoration: none;}
 					<td align="right">选择角色：</td>
 					<td width="30%">
 						<!-- example-select2 alert(this.value);-->
-						<select id="" name="" onchange="showLimits(this.value,'<%=basePath %>');" class="select-select2" style="width: 100%;" data-placeholder="请选择角色">
+						<select id="" name="roles" onchange="showLimits(this.value,'<%=basePath %>');" class="select-select2" style="width: 100%;" data-placeholder="请选择角色">
 	                        <!-- 所需数据占位符属性与Select2插件 -->
 	                        <option></option>
 	                        <c:forEach items="${roles }" var="r">
@@ -83,9 +86,11 @@ a{text-decoration: none;}
 	                        </c:forEach>
                         </select>
 					</td>
-					<td style="padding-right: 10px;">
-						<!-- data-toggle="modal" data-target="#myModal" -->
-						<a onclick="layerAlert();"><i class="fa fa-pencil"></i>修改角色名称</a>
+					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<a onclick="openEditRoleName('<%=basePath %>');" style="cursor: pointer; ">
+							<i class="fa fa-pencil" >修改角色名称</i>
+						</a>
 					</td>
 					</tr>
 				</table>
@@ -143,35 +148,6 @@ a{text-decoration: none;}
          	</div>
          	
          	
-         	<!-- 弹出修改角色名称模态框 -->
-         	<div class="modal fade" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">修改角色名称</h4>
-			      </div>
-			      <div class="modal-body">
-			        <table border="0">
-			        	<tr>
-							<td><input type="hidden" value=""></td>
-						</tr>
-						<tr>
-							<td align="right" width="100px"><font color="red">*</font>角色名称：&nbsp;&nbsp;</td>
-							<td width="200px">
-								<input type="text" class="form-control" placeholder="">
-							</td>
-						</tr>
-					</table>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-			        <button type="button" class="btn btn-primary">保存</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-         	
        </div>
      </div>
 
@@ -192,6 +168,45 @@ a{text-decoration: none;}
 			//alert("角色ID："+roleId+"   项目地址："+basePath);
 			location.href=basePath+"role/showLimits.do?roleId="+roleId
 		}
+		
+		//打开修改角色名称页面
+		function openEditRoleName(basePath){
+			
+			//layer.msg("请选择你要修改的角色名称");
+			var roleId = $("[name=roles] option:selected").val();
+			if(roleId == ""){
+				//alert(roleId);
+				layer.msg("请选择你要修改的角色名称",{
+					icon:5,
+					offset:"100px"
+				});
+				return false;
+			}
+			//alert(roleId);
+			layer.open({
+				title : "修改角色名称",
+				type : 2,
+				content : basePath+"role/edit.htm?roleId="+roleId, 
+				area : [ "600px", "170px" ],// 设置宽高
+				offset : "40px",
+				moveOut : true,// 允许鼠标拖动
+				skin : "layui-layer-lan1",
+				cancel : function(index) {
+					// 用于区分下面confirm的index
+					/* var openIndex = index;
+					layer.confirm("确定要关闭吗？", {
+						title : "系统提示",
+						icon : 3,
+						btn : [ "确认", "取消" ]
+					}, function(index, layero) {
+						layer.close(layer.index);
+						layer.close(openIndex);
+					}, function() {
+						
+					}); */
+				}
+			});
+		};
 	</script>
 	<script type="text/javascript" src="<%=basePath %>layer/layer.js"></script>
 </body>
