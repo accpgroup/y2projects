@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.InReRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.InReRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="in_re_code" property="inReCode" jdbcType="VARCHAR" />
+    <result column="in_re_type" property="inReType" jdbcType="VARCHAR" />
+    <result column="recorde_date" property="recordeDate" jdbcType="VARCHAR" />
+    <result column="repository_id" property="repositoryId" jdbcType="INTEGER" />
+    <result column="bill_code" property="billCode" jdbcType="VARCHAR" />
+    <result column="deal_emp_id" property="dealEmpId" jdbcType="INTEGER" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, in_re_code, in_re_type, recorde_date, repository_id, bill_code, deal_emp_id, 
+    create_emp_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from in_re_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from in_re_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.InReRecorde" >
+    insert into in_re_recorde (id, in_re_code, in_re_type, 
+      recorde_date, repository_id, bill_code, 
+      deal_emp_id, create_emp_id)
+    values (#{id,jdbcType=INTEGER}, #{inReCode,jdbcType=VARCHAR}, #{inReType,jdbcType=VARCHAR}, 
+      #{recordeDate,jdbcType=VARCHAR}, #{repositoryId,jdbcType=INTEGER}, #{billCode,jdbcType=VARCHAR}, 
+      #{dealEmpId,jdbcType=INTEGER}, #{createEmpId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.InReRecorde" >
+    insert into in_re_recorde
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="inReCode != null" >
+        in_re_code,
+      </if>
+      <if test="inReType != null" >
+        in_re_type,
+      </if>
+      <if test="recordeDate != null" >
+        recorde_date,
+      </if>
+      <if test="repositoryId != null" >
+        repository_id,
+      </if>
+      <if test="billCode != null" >
+        bill_code,
+      </if>
+      <if test="dealEmpId != null" >
+        deal_emp_id,
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="inReCode != null" >
+        #{inReCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inReType != null" >
+        #{inReType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordeDate != null" >
+        #{recordeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryId != null" >
+        #{repositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="billCode != null" >
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dealEmpId != null" >
+        #{dealEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="createEmpId != null" >
+        #{createEmpId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.InReRecorde" >
+    update in_re_recorde
+    <set >
+      <if test="inReCode != null" >
+        in_re_code = #{inReCode,jdbcType=VARCHAR},
+      </if>
+      <if test="inReType != null" >
+        in_re_type = #{inReType,jdbcType=VARCHAR},
+      </if>
+      <if test="recordeDate != null" >
+        recorde_date = #{recordeDate,jdbcType=VARCHAR},
+      </if>
+      <if test="repositoryId != null" >
+        repository_id = #{repositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="billCode != null" >
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dealEmpId != null" >
+        deal_emp_id = #{dealEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.InReRecorde" >
+    update in_re_recorde
+    set in_re_code = #{inReCode,jdbcType=VARCHAR},
+      in_re_type = #{inReType,jdbcType=VARCHAR},
+      recorde_date = #{recordeDate,jdbcType=VARCHAR},
+      repository_id = #{repositoryId,jdbcType=INTEGER},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      deal_emp_id = #{dealEmpId,jdbcType=INTEGER},
+      create_emp_id = #{createEmpId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

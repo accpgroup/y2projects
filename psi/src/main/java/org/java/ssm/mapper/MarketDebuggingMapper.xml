@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketDebuggingMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketDebugging" >
+    <result column="service_code" property="serviceCode" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_Version" property="productVersion" jdbcType="VARCHAR" />
+    <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="debug_time" property="debugTime" jdbcType="DATE" />
+    <result column="debug_info" property="debugInfo" jdbcType="VARCHAR" />
+    <result column="debug_idea" property="debugIdea" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketDebugging" >
+    insert into market_debugging (service_code, unit_id, telephone, 
+      linkman, product_name, product_Version, 
+      manufacturer, debug_time, debug_info, 
+      debug_idea)
+    values (#{serviceCode,jdbcType=VARCHAR}, #{unitId,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, 
+      #{linkman,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{productVersion,jdbcType=VARCHAR}, 
+      #{manufacturer,jdbcType=VARCHAR}, #{debugTime,jdbcType=DATE}, #{debugInfo,jdbcType=VARCHAR}, 
+      #{debugIdea,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketDebugging" >
+    insert into market_debugging
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serviceCode != null" >
+        service_code,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productVersion != null" >
+        product_Version,
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer,
+      </if>
+      <if test="debugTime != null" >
+        debug_time,
+      </if>
+      <if test="debugInfo != null" >
+        debug_info,
+      </if>
+      <if test="debugIdea != null" >
+        debug_idea,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serviceCode != null" >
+        #{serviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="debugTime != null" >
+        #{debugTime,jdbcType=DATE},
+      </if>
+      <if test="debugInfo != null" >
+        #{debugInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="debugIdea != null" >
+        #{debugIdea,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

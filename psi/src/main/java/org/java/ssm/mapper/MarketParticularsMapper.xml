@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketParticularsMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketParticulars" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="product_Card" property="productCard" jdbcType="INTEGER" />
+    <result column="stId" property="stid" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="other_moeny" property="otherMoeny" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="market_infoid" property="marketInfoid" jdbcType="INTEGER" />
+    <result column="unitPrice" property="unitprice" jdbcType="DOUBLE" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_Card, stId, number, other_moeny, remark, market_infoid, unitPrice, money
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from market_particulars
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from market_particulars
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketParticulars" >
+    insert into market_particulars (id, product_Card, stId, 
+      number, other_moeny, remark, 
+      market_infoid, unitPrice, money
+      )
+    values (#{id,jdbcType=INTEGER}, #{productCard,jdbcType=INTEGER}, #{stid,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{otherMoeny,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      #{marketInfoid,jdbcType=INTEGER}, #{unitprice,jdbcType=DOUBLE}, #{money,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketParticulars" >
+    insert into market_particulars
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productCard != null" >
+        product_Card,
+      </if>
+      <if test="stid != null" >
+        stId,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="otherMoeny != null" >
+        other_moeny,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="marketInfoid != null" >
+        market_infoid,
+      </if>
+      <if test="unitprice != null" >
+        unitPrice,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productCard != null" >
+        #{productCard,jdbcType=INTEGER},
+      </if>
+      <if test="stid != null" >
+        #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="otherMoeny != null" >
+        #{otherMoeny,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="marketInfoid != null" >
+        #{marketInfoid,jdbcType=INTEGER},
+      </if>
+      <if test="unitprice != null" >
+        #{unitprice,jdbcType=DOUBLE},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.MarketParticulars" >
+    update market_particulars
+    <set >
+      <if test="productCard != null" >
+        product_Card = #{productCard,jdbcType=INTEGER},
+      </if>
+      <if test="stid != null" >
+        stId = #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="otherMoeny != null" >
+        other_moeny = #{otherMoeny,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="marketInfoid != null" >
+        market_infoid = #{marketInfoid,jdbcType=INTEGER},
+      </if>
+      <if test="unitprice != null" >
+        unitPrice = #{unitprice,jdbcType=DOUBLE},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.MarketParticulars" >
+    update market_particulars
+    set product_Card = #{productCard,jdbcType=INTEGER},
+      stId = #{stid,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      other_moeny = #{otherMoeny,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      market_infoid = #{marketInfoid,jdbcType=INTEGER},
+      unitPrice = #{unitprice,jdbcType=DOUBLE},
+      money = #{money,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

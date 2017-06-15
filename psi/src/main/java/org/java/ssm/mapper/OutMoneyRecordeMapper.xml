@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.OutMoneyRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.OutMoneyRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="out_moeny_code" property="outMoenyCode" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
+    <result column="already_amount" property="alreadyAmount" jdbcType="DOUBLE" />
+    <result column="bfId" property="bfid" jdbcType="INTEGER" />
+    <result column="out_money_type" property="outMoneyType" jdbcType="VARCHAR" />
+    <result column="bill_code" property="billCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="out_money_status" property="outMoneyStatus" jdbcType="VARCHAR" />
+    <result column="is_end" property="isEnd" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, out_moeny_code, amount, already_amount, bfId, out_money_type, bill_code, create_time, 
+    create_emp_id, remark, out_money_status, is_end, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from out_money_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from out_money_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.OutMoneyRecorde" >
+    insert into out_money_recorde (id, out_moeny_code, amount, 
+      already_amount, bfId, out_money_type, 
+      bill_code, create_time, create_emp_id, 
+      remark, out_money_status, is_end, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{outMoenyCode,jdbcType=VARCHAR}, #{amount,jdbcType=DOUBLE}, 
+      #{alreadyAmount,jdbcType=DOUBLE}, #{bfid,jdbcType=INTEGER}, #{outMoneyType,jdbcType=VARCHAR}, 
+      #{billCode,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{createEmpId,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{outMoneyStatus,jdbcType=VARCHAR}, #{isEnd,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.OutMoneyRecorde" >
+    insert into out_money_recorde
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="outMoenyCode != null" >
+        out_moeny_code,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="alreadyAmount != null" >
+        already_amount,
+      </if>
+      <if test="bfid != null" >
+        bfId,
+      </if>
+      <if test="outMoneyType != null" >
+        out_money_type,
+      </if>
+      <if test="billCode != null" >
+        bill_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="outMoneyStatus != null" >
+        out_money_status,
+      </if>
+      <if test="isEnd != null" >
+        is_end,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="outMoenyCode != null" >
+        #{outMoenyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="alreadyAmount != null" >
+        #{alreadyAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="bfid != null" >
+        #{bfid,jdbcType=INTEGER},
+      </if>
+      <if test="outMoneyType != null" >
+        #{outMoneyType,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null" >
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createEmpId != null" >
+        #{createEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="outMoneyStatus != null" >
+        #{outMoneyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnd != null" >
+        #{isEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.OutMoneyRecorde" >
+    update out_money_recorde
+    <set >
+      <if test="outMoenyCode != null" >
+        out_moeny_code = #{outMoenyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="alreadyAmount != null" >
+        already_amount = #{alreadyAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="bfid != null" >
+        bfId = #{bfid,jdbcType=INTEGER},
+      </if>
+      <if test="outMoneyType != null" >
+        out_money_type = #{outMoneyType,jdbcType=VARCHAR},
+      </if>
+      <if test="billCode != null" >
+        bill_code = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="outMoneyStatus != null" >
+        out_money_status = #{outMoneyStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnd != null" >
+        is_end = #{isEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.OutMoneyRecorde" >
+    update out_money_recorde
+    set out_moeny_code = #{outMoenyCode,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DOUBLE},
+      already_amount = #{alreadyAmount,jdbcType=DOUBLE},
+      bfId = #{bfid,jdbcType=INTEGER},
+      out_money_type = #{outMoneyType,jdbcType=VARCHAR},
+      bill_code = #{billCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      out_money_status = #{outMoneyStatus,jdbcType=VARCHAR},
+      is_end = #{isEnd,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

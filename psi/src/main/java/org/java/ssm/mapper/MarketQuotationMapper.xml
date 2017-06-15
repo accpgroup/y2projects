@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketQuotationMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketQuotation" >
+    <id column="quoatation_Card" property="quoatationCard" jdbcType="VARCHAR" />
+    <result column="quoatation_time" property="quoatationTime" jdbcType="DATE" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="technical_index" property="technicalIndex" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    quoatation_Card, quoatation_time, unit_id, emp_id, technical_index, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from market_quotation
+    where quoatation_Card = #{quoatationCard,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from market_quotation
+    where quoatation_Card = #{quoatationCard,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketQuotation" >
+    insert into market_quotation (quoatation_Card, quoatation_time, unit_id, 
+      emp_id, technical_index, remark
+      )
+    values (#{quoatationCard,jdbcType=VARCHAR}, #{quoatationTime,jdbcType=DATE}, #{unitId,jdbcType=INTEGER}, 
+      #{empId,jdbcType=INTEGER}, #{technicalIndex,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketQuotation" >
+    insert into market_quotation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="quoatationCard != null" >
+        quoatation_Card,
+      </if>
+      <if test="quoatationTime != null" >
+        quoatation_time,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="technicalIndex != null" >
+        technical_index,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="quoatationCard != null" >
+        #{quoatationCard,jdbcType=VARCHAR},
+      </if>
+      <if test="quoatationTime != null" >
+        #{quoatationTime,jdbcType=DATE},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="technicalIndex != null" >
+        #{technicalIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.MarketQuotation" >
+    update market_quotation
+    <set >
+      <if test="quoatationTime != null" >
+        quoatation_time = #{quoatationTime,jdbcType=DATE},
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="technicalIndex != null" >
+        technical_index = #{technicalIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where quoatation_Card = #{quoatationCard,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.MarketQuotation" >
+    update market_quotation
+    set quoatation_time = #{quoatationTime,jdbcType=DATE},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      emp_id = #{empId,jdbcType=INTEGER},
+      technical_index = #{technicalIndex,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where quoatation_Card = #{quoatationCard,jdbcType=VARCHAR}
+  </update>
+</mapper>
