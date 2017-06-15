@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -26,11 +27,17 @@ public class SysRoleController {
 	@Autowired
 	private SysRoleService roleService;
 	
+	@RequestMapping("/updateSysRole.do")
+	public @ResponseBody String updateSysRole() {
+		/*String id,String name*/
+		/*System.out.println("角色ID："+id+"  角色名称："+name);*/
+		System.out.println("+++++++++++++++++++++++");
+		return "";
+	}
 	
 	/**
-	 * 
 	 * @Title:  showLimits
-	 * @Description: TODO(这里用一句话描述这个方法的作用) 
+	 * @Description:  根据角色的Id来显示该角色所拥有的权限
 	 * @return String
 	 */
 	@RequestMapping("/showLimits.do")
@@ -70,9 +77,9 @@ public class SysRoleController {
 	 * @return String
 	 */
 	@RequestMapping("/edit.htm")
-	public String editSysRole(Model model) {
+	public String editSysRole(Model model,Integer roleId) {
 		System.out.println("显示编辑角色信息的页面");
-		SysRole role = service.selectByPrimaryKey(1);
+		SysRole role = service.selectByPrimaryKey(roleId);
 		model.addAttribute("role", role);
 		
 		return "/sys/role/edit";
