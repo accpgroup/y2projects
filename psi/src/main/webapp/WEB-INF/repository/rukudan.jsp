@@ -62,7 +62,8 @@
            }
            //点击普通查询按钮
            function ptSerach(){
-        	   
+        	   var date = $("#date_begin").val();
+        	   alert(date);
            }
            
            //点击新增按钮
@@ -115,10 +116,10 @@
 		                                日期
 		         </td>
                 <td>
-					<div class="input-group input-daterange" data-date-format="mm/dd/yyyy">
-                                   <input type="text" id="date_begin" name="date_begin" class="form-control" placeholder="起始日期">
+					<div class="input-group input-daterange" data-date-format="yyyy-mm-dd">
+                                   <input type="text" id="date_begin" name="date_begin" class="form-control"  placeholder="起始日期">
                                    <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
-                                   <input type="text" id="date_end" name="date_end" class="form-control" placeholder="截止日期">
+                                   <input type="text" id="date_end" name="date_end" class="form-control"  placeholder="截止日期">
                     </div>
                 </td>
 		         <td>
@@ -187,7 +188,7 @@
                                                         <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr class="success">
+                                                <tr class="active">
                                                     <td><strong>3</strong></td>
                                                     <td><strong>3</strong></td>
                                                     <td><strong>3</strong></td>
