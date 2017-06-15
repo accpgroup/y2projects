@@ -44,7 +44,7 @@
 	<script type="text/javascript" src="<%=basePath %>layer/layer.js"></script>
 	<script type="text/javascript">
 		function update(basePath){
-			alert(basePath);
+			/* alert(basePath); */
 			$.ajax({
 				url:basePath+"role/updateSysRole.do",
 				type:"post",
