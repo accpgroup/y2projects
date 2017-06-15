@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.BaseStoreMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.BaseStore" >
+    <id column="stId" property="stid" jdbcType="INTEGER" />
+    <result column="stName" property="stname" jdbcType="VARCHAR" />
+    <result column="stAddress" property="staddress" jdbcType="VARCHAR" />
+    <result column="stRemark" property="stremark" jdbcType="VARCHAR" />
+    <result column="createrId" property="createrid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="VARCHAR" />
+    <result column="isStatus" property="isstatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    stId, stName, stAddress, stRemark, createrId, createTime, isStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_store
+    where stId = #{stid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_store
+    where stId = #{stid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.BaseStore" >
+    insert into base_store (stId, stName, stAddress, 
+      stRemark, createrId, createTime, 
+      isStatus)
+    values (#{stid,jdbcType=INTEGER}, #{stname,jdbcType=VARCHAR}, #{staddress,jdbcType=VARCHAR}, 
+      #{stremark,jdbcType=VARCHAR}, #{createrid,jdbcType=INTEGER}, #{createtime,jdbcType=VARCHAR}, 
+      #{isstatus,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.BaseStore" >
+    insert into base_store
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stid != null" >
+        stId,
+      </if>
+      <if test="stname != null" >
+        stName,
+      </if>
+      <if test="staddress != null" >
+        stAddress,
+      </if>
+      <if test="stremark != null" >
+        stRemark,
+      </if>
+      <if test="createrid != null" >
+        createrId,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="isstatus != null" >
+        isStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stid != null" >
+        #{stid,jdbcType=INTEGER},
+      </if>
+      <if test="stname != null" >
+        #{stname,jdbcType=VARCHAR},
+      </if>
+      <if test="staddress != null" >
+        #{staddress,jdbcType=VARCHAR},
+      </if>
+      <if test="stremark != null" >
+        #{stremark,jdbcType=VARCHAR},
+      </if>
+      <if test="createrid != null" >
+        #{createrid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="isstatus != null" >
+        #{isstatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.BaseStore" >
+    update base_store
+    <set >
+      <if test="stname != null" >
+        stName = #{stname,jdbcType=VARCHAR},
+      </if>
+      <if test="staddress != null" >
+        stAddress = #{staddress,jdbcType=VARCHAR},
+      </if>
+      <if test="stremark != null" >
+        stRemark = #{stremark,jdbcType=VARCHAR},
+      </if>
+      <if test="createrid != null" >
+        createrId = #{createrid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="isstatus != null" >
+        isStatus = #{isstatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where stId = #{stid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.BaseStore" >
+    update base_store
+    set stName = #{stname,jdbcType=VARCHAR},
+      stAddress = #{staddress,jdbcType=VARCHAR},
+      stRemark = #{stremark,jdbcType=VARCHAR},
+      createrId = #{createrid,jdbcType=INTEGER},
+      createTime = #{createtime,jdbcType=VARCHAR},
+      isStatus = #{isstatus,jdbcType=CHAR}
+    where stId = #{stid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketRetparticularsMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketRetparticulars" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="product_Id" property="productId" jdbcType="INTEGER" />
+    <result column="return_card" property="returnCard" jdbcType="VARCHAR" />
+    <result column="storeId" property="storeid" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, product_Id, return_card, storeId, number, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from market_retparticulars
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from market_retparticulars
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketRetparticulars" >
+    insert into market_retparticulars (id, product_Id, return_card, 
+      storeId, number, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{returnCard,jdbcType=VARCHAR}, 
+      #{storeid,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketRetparticulars" >
+    insert into market_retparticulars
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="productId != null" >
+        product_Id,
+      </if>
+      <if test="returnCard != null" >
+        return_card,
+      </if>
+      <if test="storeid != null" >
+        storeId,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null" >
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="returnCard != null" >
+        #{returnCard,jdbcType=VARCHAR},
+      </if>
+      <if test="storeid != null" >
+        #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.MarketRetparticulars" >
+    update market_retparticulars
+    <set >
+      <if test="productId != null" >
+        product_Id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="returnCard != null" >
+        return_card = #{returnCard,jdbcType=VARCHAR},
+      </if>
+      <if test="storeid != null" >
+        storeId = #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.MarketRetparticulars" >
+    update market_retparticulars
+    set product_Id = #{productId,jdbcType=INTEGER},
+      return_card = #{returnCard,jdbcType=VARCHAR},
+      storeId = #{storeid,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

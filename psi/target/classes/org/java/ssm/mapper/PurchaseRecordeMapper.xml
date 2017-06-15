@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.PurchaseRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.PurchaseRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="recorde_code" property="recordeCode" jdbcType="VARCHAR" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="repository_id" property="repositoryId" jdbcType="INTEGER" />
+    <result column="total_money" property="totalMoney" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, recorde_code, supplier_id, repository_id, total_money, create_time, create_emp_id, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from purchase_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from purchase_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.PurchaseRecorde" >
+    insert into purchase_recorde (id, recorde_code, supplier_id, 
+      repository_id, total_money, create_time, 
+      create_emp_id, remark)
+    values (#{id,jdbcType=INTEGER}, #{recordeCode,jdbcType=VARCHAR}, #{supplierId,jdbcType=INTEGER}, 
+      #{repositoryId,jdbcType=INTEGER}, #{totalMoney,jdbcType=DOUBLE}, #{createTime,jdbcType=DATE}, 
+      #{createEmpId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.PurchaseRecorde" >
+    insert into purchase_recorde
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="recordeCode != null" >
+        recorde_code,
+      </if>
+      <if test="supplierId != null" >
+        supplier_id,
+      </if>
+      <if test="repositoryId != null" >
+        repository_id,
+      </if>
+      <if test="totalMoney != null" >
+        total_money,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="recordeCode != null" >
+        #{recordeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="repositoryId != null" >
+        #{repositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="totalMoney != null" >
+        #{totalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createEmpId != null" >
+        #{createEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.PurchaseRecorde" >
+    update purchase_recorde
+    <set >
+      <if test="recordeCode != null" >
+        recorde_code = #{recordeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierId != null" >
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="repositoryId != null" >
+        repository_id = #{repositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="totalMoney != null" >
+        total_money = #{totalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.PurchaseRecorde" >
+    update purchase_recorde
+    set recorde_code = #{recordeCode,jdbcType=VARCHAR},
+      supplier_id = #{supplierId,jdbcType=INTEGER},
+      repository_id = #{repositoryId,jdbcType=INTEGER},
+      total_money = #{totalMoney,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=DATE},
+      create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -21,8 +21,8 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="suffix" value=".jsp" />
-	</bean>
-	
+	</bean> 
+    
 	<!-- 默认的注解映射的支持 -->
 	<mvc:annotation-driven />
 </beans>

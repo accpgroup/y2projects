@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketReturnMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketReturn" >
+    <id column="return_id" property="returnId" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="return_money" property="returnMoney" jdbcType="DOUBLE" />
+    <result column="return_time" property="returnTime" jdbcType="DATE" />
+    <result column="return_statu" property="returnStatu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    return_id, unit_id, emp_id, return_money, return_time, return_statu
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from market_return
+    where return_id = #{returnId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from market_return
+    where return_id = #{returnId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketReturn" >
+    insert into market_return (return_id, unit_id, emp_id, 
+      return_money, return_time, return_statu
+      )
+    values (#{returnId,jdbcType=VARCHAR}, #{unitId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, 
+      #{returnMoney,jdbcType=DOUBLE}, #{returnTime,jdbcType=DATE}, #{returnStatu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketReturn" >
+    insert into market_return
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="returnId != null" >
+        return_id,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="returnMoney != null" >
+        return_money,
+      </if>
+      <if test="returnTime != null" >
+        return_time,
+      </if>
+      <if test="returnStatu != null" >
+        return_statu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="returnId != null" >
+        #{returnId,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="returnMoney != null" >
+        #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="returnTime != null" >
+        #{returnTime,jdbcType=DATE},
+      </if>
+      <if test="returnStatu != null" >
+        #{returnStatu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.MarketReturn" >
+    update market_return
+    <set >
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="returnMoney != null" >
+        return_money = #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="returnTime != null" >
+        return_time = #{returnTime,jdbcType=DATE},
+      </if>
+      <if test="returnStatu != null" >
+        return_statu = #{returnStatu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where return_id = #{returnId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.MarketReturn" >
+    update market_return
+    set unit_id = #{unitId,jdbcType=INTEGER},
+      emp_id = #{empId,jdbcType=INTEGER},
+      return_money = #{returnMoney,jdbcType=DOUBLE},
+      return_time = #{returnTime,jdbcType=DATE},
+      return_statu = #{returnStatu,jdbcType=VARCHAR}
+    where return_id = #{returnId,jdbcType=VARCHAR}
+  </update>
+</mapper>

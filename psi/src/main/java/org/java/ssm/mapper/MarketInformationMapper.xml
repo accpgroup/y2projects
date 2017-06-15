@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketInformationMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketInformation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="market_Card" property="marketCard" jdbcType="VARCHAR" />
+    <result column="market_time" property="marketTime" jdbcType="DATE" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="invoice_way" property="invoiceWay" jdbcType="VARCHAR" />
+    <result column="proceeds_way" property="proceedsWay" jdbcType="VARCHAR" />
+    <result column="gathering_deadline" property="gatheringDeadline" jdbcType="DATE" />
+    <result column="bank_id" property="bankId" jdbcType="INTEGER" />
+    <result column="sum_money" property="sumMoney" jdbcType="DOUBLE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="spare_money" property="spareMoney" jdbcType="DOUBLE" />
+    <result column="market_statu" property="marketStatu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, market_Card, market_time, unit_id, emp_id, invoice_way, proceeds_way, gathering_deadline, 
+    bank_id, sum_money, remark, spare_money, market_statu
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from market_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from market_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketInformation" >
+    insert into market_information (id, market_Card, market_time, 
+      unit_id, emp_id, invoice_way, 
+      proceeds_way, gathering_deadline, bank_id, 
+      sum_money, remark, spare_money, 
+      market_statu)
+    values (#{id,jdbcType=INTEGER}, #{marketCard,jdbcType=VARCHAR}, #{marketTime,jdbcType=DATE}, 
+      #{unitId,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{invoiceWay,jdbcType=VARCHAR}, 
+      #{proceedsWay,jdbcType=VARCHAR}, #{gatheringDeadline,jdbcType=DATE}, #{bankId,jdbcType=INTEGER}, 
+      #{sumMoney,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{spareMoney,jdbcType=DOUBLE}, 
+      #{marketStatu,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketInformation" >
+    insert into market_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="marketCard != null" >
+        market_Card,
+      </if>
+      <if test="marketTime != null" >
+        market_time,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="invoiceWay != null" >
+        invoice_way,
+      </if>
+      <if test="proceedsWay != null" >
+        proceeds_way,
+      </if>
+      <if test="gatheringDeadline != null" >
+        gathering_deadline,
+      </if>
+      <if test="bankId != null" >
+        bank_id,
+      </if>
+      <if test="sumMoney != null" >
+        sum_money,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="spareMoney != null" >
+        spare_money,
+      </if>
+      <if test="marketStatu != null" >
+        market_statu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="marketCard != null" >
+        #{marketCard,jdbcType=VARCHAR},
+      </if>
+      <if test="marketTime != null" >
+        #{marketTime,jdbcType=DATE},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceWay != null" >
+        #{invoiceWay,jdbcType=VARCHAR},
+      </if>
+      <if test="proceedsWay != null" >
+        #{proceedsWay,jdbcType=VARCHAR},
+      </if>
+      <if test="gatheringDeadline != null" >
+        #{gatheringDeadline,jdbcType=DATE},
+      </if>
+      <if test="bankId != null" >
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="sumMoney != null" >
+        #{sumMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="spareMoney != null" >
+        #{spareMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="marketStatu != null" >
+        #{marketStatu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.MarketInformation" >
+    update market_information
+    <set >
+      <if test="marketCard != null" >
+        market_Card = #{marketCard,jdbcType=VARCHAR},
+      </if>
+      <if test="marketTime != null" >
+        market_time = #{marketTime,jdbcType=DATE},
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="invoiceWay != null" >
+        invoice_way = #{invoiceWay,jdbcType=VARCHAR},
+      </if>
+      <if test="proceedsWay != null" >
+        proceeds_way = #{proceedsWay,jdbcType=VARCHAR},
+      </if>
+      <if test="gatheringDeadline != null" >
+        gathering_deadline = #{gatheringDeadline,jdbcType=DATE},
+      </if>
+      <if test="bankId != null" >
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="sumMoney != null" >
+        sum_money = #{sumMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="spareMoney != null" >
+        spare_money = #{spareMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="marketStatu != null" >
+        market_statu = #{marketStatu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.MarketInformation" >
+    update market_information
+    set market_Card = #{marketCard,jdbcType=VARCHAR},
+      market_time = #{marketTime,jdbcType=DATE},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      emp_id = #{empId,jdbcType=INTEGER},
+      invoice_way = #{invoiceWay,jdbcType=VARCHAR},
+      proceeds_way = #{proceedsWay,jdbcType=VARCHAR},
+      gathering_deadline = #{gatheringDeadline,jdbcType=DATE},
+      bank_id = #{bankId,jdbcType=INTEGER},
+      sum_money = #{sumMoney,jdbcType=DOUBLE},
+      remark = #{remark,jdbcType=VARCHAR},
+      spare_money = #{spareMoney,jdbcType=DOUBLE},
+      market_statu = #{marketStatu,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

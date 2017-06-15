@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.MarketServiceMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.MarketService" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="service_Card" property="serviceCard" jdbcType="VARCHAR" />
+    <result column="unit_id" property="unitId" jdbcType="INTEGER" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_Version" property="productVersion" jdbcType="VARCHAR" />
+    <result column="manufacturer" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="produce_time" property="produceTime" jdbcType="DATE" />
+    <result column="buy_time" property="buyTime" jdbcType="DATE" />
+    <result column="invoiceCard" property="invoicecard" jdbcType="INTEGER" />
+    <result column="actualuse_time" property="actualuseTime" jdbcType="DATE" />
+    <result column="warranty_card" property="warrantyCard" jdbcType="VARCHAR" />
+    <result column="service_item" property="serviceItem" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, service_Card, unit_id, telephone, linkman, product_name, product_Version, manufacturer, 
+    produce_time, buy_time, invoiceCard, actualuse_time, warranty_card, service_item
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from market_service
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from market_service
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.MarketService" >
+    insert into market_service (id, service_Card, unit_id, 
+      telephone, linkman, product_name, 
+      product_Version, manufacturer, produce_time, 
+      buy_time, invoiceCard, actualuse_time, 
+      warranty_card, service_item)
+    values (#{id,jdbcType=INTEGER}, #{serviceCard,jdbcType=VARCHAR}, #{unitId,jdbcType=INTEGER}, 
+      #{telephone,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{productVersion,jdbcType=VARCHAR}, #{manufacturer,jdbcType=VARCHAR}, #{produceTime,jdbcType=DATE}, 
+      #{buyTime,jdbcType=DATE}, #{invoicecard,jdbcType=INTEGER}, #{actualuseTime,jdbcType=DATE}, 
+      #{warrantyCard,jdbcType=VARCHAR}, #{serviceItem,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.MarketService" >
+    insert into market_service
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serviceCard != null" >
+        service_Card,
+      </if>
+      <if test="unitId != null" >
+        unit_id,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="productVersion != null" >
+        product_Version,
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer,
+      </if>
+      <if test="produceTime != null" >
+        produce_time,
+      </if>
+      <if test="buyTime != null" >
+        buy_time,
+      </if>
+      <if test="invoicecard != null" >
+        invoiceCard,
+      </if>
+      <if test="actualuseTime != null" >
+        actualuse_time,
+      </if>
+      <if test="warrantyCard != null" >
+        warranty_card,
+      </if>
+      <if test="serviceItem != null" >
+        service_item,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serviceCard != null" >
+        #{serviceCard,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="produceTime != null" >
+        #{produceTime,jdbcType=DATE},
+      </if>
+      <if test="buyTime != null" >
+        #{buyTime,jdbcType=DATE},
+      </if>
+      <if test="invoicecard != null" >
+        #{invoicecard,jdbcType=INTEGER},
+      </if>
+      <if test="actualuseTime != null" >
+        #{actualuseTime,jdbcType=DATE},
+      </if>
+      <if test="warrantyCard != null" >
+        #{warrantyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItem != null" >
+        #{serviceItem,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.MarketService" >
+    update market_service
+    <set >
+      <if test="serviceCard != null" >
+        service_Card = #{serviceCard,jdbcType=VARCHAR},
+      </if>
+      <if test="unitId != null" >
+        unit_id = #{unitId,jdbcType=INTEGER},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="productVersion != null" >
+        product_Version = #{productVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null" >
+        manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="produceTime != null" >
+        produce_time = #{produceTime,jdbcType=DATE},
+      </if>
+      <if test="buyTime != null" >
+        buy_time = #{buyTime,jdbcType=DATE},
+      </if>
+      <if test="invoicecard != null" >
+        invoiceCard = #{invoicecard,jdbcType=INTEGER},
+      </if>
+      <if test="actualuseTime != null" >
+        actualuse_time = #{actualuseTime,jdbcType=DATE},
+      </if>
+      <if test="warrantyCard != null" >
+        warranty_card = #{warrantyCard,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItem != null" >
+        service_item = #{serviceItem,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.MarketService" >
+    update market_service
+    set service_Card = #{serviceCard,jdbcType=VARCHAR},
+      unit_id = #{unitId,jdbcType=INTEGER},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      product_Version = #{productVersion,jdbcType=VARCHAR},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      produce_time = #{produceTime,jdbcType=DATE},
+      buy_time = #{buyTime,jdbcType=DATE},
+      invoiceCard = #{invoicecard,jdbcType=INTEGER},
+      actualuse_time = #{actualuseTime,jdbcType=DATE},
+      warranty_card = #{warrantyCard,jdbcType=VARCHAR},
+      service_item = #{serviceItem,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

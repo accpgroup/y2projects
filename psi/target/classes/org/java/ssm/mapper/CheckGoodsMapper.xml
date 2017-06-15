@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.CheckGoodsMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.CheckGoods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="check_re_code" property="checkReCode" jdbcType="VARCHAR" />
+    <result column="total_amount" property="totalAmount" jdbcType="INTEGER" />
+    <result column="broken_amount" property="brokenAmount" jdbcType="INTEGER" />
+    <result column="wc_amount" property="wcAmount" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goods_id, check_re_code, total_amount, broken_amount, wc_amount, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from check_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from check_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.CheckGoods" >
+    insert into check_goods (id, goods_id, check_re_code, 
+      total_amount, broken_amount, wc_amount, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{checkReCode,jdbcType=VARCHAR}, 
+      #{totalAmount,jdbcType=INTEGER}, #{brokenAmount,jdbcType=INTEGER}, #{wcAmount,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.CheckGoods" >
+    insert into check_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="checkReCode != null" >
+        check_re_code,
+      </if>
+      <if test="totalAmount != null" >
+        total_amount,
+      </if>
+      <if test="brokenAmount != null" >
+        broken_amount,
+      </if>
+      <if test="wcAmount != null" >
+        wc_amount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="checkReCode != null" >
+        #{checkReCode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalAmount != null" >
+        #{totalAmount,jdbcType=INTEGER},
+      </if>
+      <if test="brokenAmount != null" >
+        #{brokenAmount,jdbcType=INTEGER},
+      </if>
+      <if test="wcAmount != null" >
+        #{wcAmount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.CheckGoods" >
+    update check_goods
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="checkReCode != null" >
+        check_re_code = #{checkReCode,jdbcType=VARCHAR},
+      </if>
+      <if test="totalAmount != null" >
+        total_amount = #{totalAmount,jdbcType=INTEGER},
+      </if>
+      <if test="brokenAmount != null" >
+        broken_amount = #{brokenAmount,jdbcType=INTEGER},
+      </if>
+      <if test="wcAmount != null" >
+        wc_amount = #{wcAmount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.CheckGoods" >
+    update check_goods
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      check_re_code = #{checkReCode,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=INTEGER},
+      broken_amount = #{brokenAmount,jdbcType=INTEGER},
+      wc_amount = #{wcAmount,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

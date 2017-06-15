@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.AllotRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.AllotRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="allot_code" property="allotCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="out_repository_id" property="outRepositoryId" jdbcType="INTEGER" />
+    <result column="in_repository_id" property="inRepositoryId" jdbcType="INTEGER" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+    <result column="assess_emp_id" property="assessEmpId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, allot_code, create_time, out_repository_id, in_repository_id, create_emp_id, 
+    assess_emp_id, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from allot_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from allot_recorde
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.AllotRecorde" >
+    insert into allot_recorde (id, allot_code, create_time, 
+      out_repository_id, in_repository_id, create_emp_id, 
+      assess_emp_id, remark)
+    values (#{id,jdbcType=INTEGER}, #{allotCode,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
+      #{outRepositoryId,jdbcType=INTEGER}, #{inRepositoryId,jdbcType=INTEGER}, #{createEmpId,jdbcType=INTEGER}, 
+      #{assessEmpId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.AllotRecorde" >
+    insert into allot_recorde
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="allotCode != null" >
+        allot_code,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="outRepositoryId != null" >
+        out_repository_id,
+      </if>
+      <if test="inRepositoryId != null" >
+        in_repository_id,
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id,
+      </if>
+      <if test="assessEmpId != null" >
+        assess_emp_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="allotCode != null" >
+        #{allotCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="outRepositoryId != null" >
+        #{outRepositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="inRepositoryId != null" >
+        #{inRepositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="createEmpId != null" >
+        #{createEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="assessEmpId != null" >
+        #{assessEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.AllotRecorde" >
+    update allot_recorde
+    <set >
+      <if test="allotCode != null" >
+        allot_code = #{allotCode,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="outRepositoryId != null" >
+        out_repository_id = #{outRepositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="inRepositoryId != null" >
+        in_repository_id = #{inRepositoryId,jdbcType=INTEGER},
+      </if>
+      <if test="createEmpId != null" >
+        create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="assessEmpId != null" >
+        assess_emp_id = #{assessEmpId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.AllotRecorde" >
+    update allot_recorde
+    set allot_code = #{allotCode,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      out_repository_id = #{outRepositoryId,jdbcType=INTEGER},
+      in_repository_id = #{inRepositoryId,jdbcType=INTEGER},
+      create_emp_id = #{createEmpId,jdbcType=INTEGER},
+      assess_emp_id = #{assessEmpId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
