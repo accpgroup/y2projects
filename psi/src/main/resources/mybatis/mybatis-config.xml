@@ -4,6 +4,10 @@
 
 	<!-- 配置全局settings 根据需要添加-->
 	<!-- <settings></settings> -->
+	<settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
 	
 	<!-- 配置别名 -->
 	<typeAliases>
