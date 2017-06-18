@@ -52,17 +52,18 @@
 						<div class="col-xs-12">
 
 							<!-- 检索  -->
-							<form action="<%=basePath%>sys/operate_log.htm" method="post"
-								name="Form" id="Form">
-								<input type="hidden" name="index" value="1">
+							<form action="<%=basePath%>company_user/_list.htm" method="post"
+								name="empFrm" id="empFrm">
+								<input type="hidden" name="index" value="${page.pageNum }">
+								<input type="hidden" name="pageSize" value="${page.pageSize }">
 								<table>
 									<tr>
 										<td>
 											<div class="nav-search">
 												<span class="input-icon"> <input
-													onkeyup="document.forms[0].submit();" value="" type="text"
+													onkeyup="document.forms[0].submit();" value="${queryVo.userBean.keywords }" type="text"
 													placeholder="这里输入关键词" class="nav-search-input"
-													id="nav-search-input" autocomplete="off" name="keywords" /><i
+													id="nav-search-input" autocomplete="off" name="userBean.keywords" /><i
 													class="ace-icon fa fa-search nav-search-icon"></i>
 												</span>
 											</div>
@@ -141,33 +142,34 @@
 													<ul class="pagination pull-right no-margin">
 														<li><a>共<font color=red>${page.total }</font>条
 														</a></li>
-														<li><input type="number" min="1" value=""
-															id="toGoPage"
-															style="width: 60px; height: 32px; text-align: center; float: left"
-															placeholder="页码" /></li>
+														<li>
+															<input type="number" min="1" value="" id="toGoPage"
+																   style="width: 60px;height:32px; text-align: center; float: left"
+																   placeholder="页码" />
+														</li>
 														<li style="cursor: pointer;">
-															<a href=""
-															   class="btn btn-mini btn-success" style="height: 32px;">跳转</a></li>
-														<li><a
-															href="<%=basePath%>sys/operate_log.htm?index=1">首页</a></li>
-														<li><a
-															href="<%=basePath %>sys/operate_log.htm?index=${page.prePage }">上页</a></li>
+															<a onclick="paging(toGoPage.value);" class="btn btn-mini btn-success" style="height:32px;">跳转</a>
+														</li>
+														<li><a href="javascript:paging('1');">首页</a></li>
+														<li><a href="javascript:paging('${page.prePage }');">上页</a></li>
 														<li class="active"><a><font color='white'>${page.pageNum }</font></a></li>
-														<li><a
-															href="<%=basePath %>sys/operate_log.htm?index=${page.nextPage }">下页</a></li>
-														<li><a
-															href="<%=basePath %>sys/operate_log.htm?index=${page.pages }">尾页</a></li>
+														<li><a href="javascript:paging('${page.nextPage }');">下页</a></li>
+														<li><a href="javascript:paging('${page.pages }');">尾页</a></li>
 														<li><a>共${page.pages }页</a></li>
-														<li><select name="pageSize" title='显示条数'
+														<li>
+															<select name="pageSize" title='显示条数'
 															style="width: 55px; height: 32px; float: left;"
 															onchange="changeCount(this.value,'<%=basePath%>')">
+																<option value='2'>2</option>
+																<option value='2'>2</option>
 																<option value='10'>10</option>
 																<option value='10'>10</option>
 																<option value='20'>20</option>
 																<option value='30'>30</option>
 																<option value='40'>40</option>
 																<option value='50'>50</option>
-														</select></li>
+															</select>
+														</li>
 													</ul>
 												</div>
 												</c:if>
@@ -188,10 +190,17 @@
 		<!-- /.main-content -->
 	</div>
 	<script type="text/javascript">
-		//分页的公共方法
+		//翻页操作
+		function paging(index){
+			$("[name=index]").val(index);
+			//alert($("[name=index]").val());
+			$("#empFrm").submit();
+		};
+		
+		//改变页面显示数据的条数
 		function changeCount(obj, basePath) {
 			//alert("显示数量："+obj+"   本项目的地址："+basePath);
-			location.href = basePath + "sys/operate_log.htm?index=1&pageSize="
+			location.href = basePath + "company_user/_list.htm?index=1&pageSize="
 					+ obj;
 		}
 	</script>
