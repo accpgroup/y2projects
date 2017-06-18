@@ -52,11 +52,11 @@ public class MainController {
 		
 		Map<String,String> menuModelMap = service.findMenuModels();
 		mv.addObject("menuModelMap", menuModelMap);
-		System.out.println(menuModelMap.size());
+		//System.out.println(menuModelMap.size());
 		/*System.out.println(menuModelMap.get("client"));*/
-		for (String key : menuModelMap.keySet()) {
+		/*for (String key : menuModelMap.keySet()) {
 			System.out.println(key);
-		}
+		}*/
 		return mv;
 	}
 
