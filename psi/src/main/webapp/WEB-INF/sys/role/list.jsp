@@ -186,8 +186,8 @@ i:HOVER {
 			layer.open({
 				title : "修改角色名称",
 				type : 2,
-				content : basePath+"role/edit.htm?roleId="+roleId, 
-				area : [ "600px", "170px" ],// 设置宽高
+				content : "edit.htm?roleId="+roleId, 
+				area : [ "600px", "170px" ],// 设置宽高basePath+
 				offset : "40px",
 				moveOut : true,// 允许鼠标拖动
 				skin : "layui-layer-lan1",
