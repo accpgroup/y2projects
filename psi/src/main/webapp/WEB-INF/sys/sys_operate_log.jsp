@@ -53,7 +53,7 @@
 										<td>
 											<div class="nav-search">
 												<span class="input-icon">
-													<input onkeyup="document.forms[0].submit();" value="" type="text" placeholder="这里输入关键词" class="nav-search-input"
+													<input onkeyup="document.forms[0].submit();" value="${queryVo.keywords }" type="text" placeholder="这里输入关键词" class="nav-search-input"
 													id="nav-search-input" autocomplete="off" name="keywords" /><i class="ace-icon fa fa-search nav-search-icon"></i>
 												</span>
 											</div>
@@ -80,7 +80,7 @@
 											<th class="center" width="20%">操作人</th>
 											<th class="center" width="20%">时间</th>
 											<th class="center" width="20%">操作类型</th>
-											<th class="center" width="100%">操作日志</th>
+											<th class="center" width="40%">操作日志</th>
 										</tr>
 									</thead>
 
@@ -110,10 +110,10 @@
 									<table style="width: 100%;">
 										<tr>
 											<td style="vertical-align: top;">
-												<a class="btn btn-mini btn-success" onclick="add();">新增</a>
+												<!-- <a class="btn btn-mini btn-success" onclick="add();">新增</a>
 												<a class="btn btn-mini btn-danger"　onclick="makeAll('确定要删除选中的数据吗?');" title="批量删除">
 													<i class='ace-icon fa fa-trash-o bigger-120'></i>
-												</a>
+												</a> -->
 											</td>
 											<td style="vertical-align: top;">
 											<div class="pagination"
@@ -123,16 +123,17 @@
 														</a></li>
 														<li>
 															<input type="number" min="1" value="" id="toGoPage"
-															style="width: 60px;height:32px; text-align: center; float: left"
-															placeholder="页码" />
+																   style="width: 60px;height:32px; text-align: center; float: left"
+																   placeholder="页码" />
 														</li>
-														<li style="cursor: pointer;"><a onclick="toTZ();"
-															class="btn btn-mini btn-success" style="height:32px;">跳转</a></li>
-														<li><a href="<%=basePath %>sys/operate_log.htm?index=1">首页</a></li>
-														<li><a href="<%=basePath %>sys/operate_log.htm?index=${page.prePage }">上页</a></li>
+														<li style="cursor: pointer;">
+															<a onclick="paging(toGoPage.value);" class="btn btn-mini btn-success" style="height:32px;">跳转</a>
+														</li>
+														<li><a href="javascript:paging('1');">首页</a></li>
+														<li><a href="javascript:paging('${page.prePage }');">上页</a></li>
 														<li class="active"><a><font color='white'>${page.pageNum }</font></a></li>
-														<li><a href="<%=basePath %>sys/operate_log.htm?index=${page.nextPage }">下页</a></li>
-														<li><a href="<%=basePath %>sys/operate_log.htm?index=${page.pages }">尾页</a></li>
+														<li><a href="javascript:paging('${page.nextPage }');">下页</a></li>
+														<li><a href="javascript:paging('${page.pages }');">尾页</a></li>
 														<li><a>共${page.pages }页</a></li>
 														<li>
 															<select name="pageSize" title='显示条数'
@@ -164,11 +165,17 @@
 		<!-- /.main-content -->
 	</div>
 	<script type="text/javascript">
-	//分页的公共方法
-	function changeCount(obj,basePath){
-		//alert("显示数量："+obj+"   本项目的地址："+basePath);
-		location.href = basePath+"sys/operate_log.htm?index=1&pageSize="+obj;
-	}
+		//翻页操作
+		function paging(index){
+			$("[name=index]").val(index);
+			//alert($("[name=index]").val());
+			$("#logFrm").submit();
+		};
+		//改变页面显示数据的条数
+		function changeCount(obj,basePath){
+			//alert("显示数量："+obj+"   本项目的地址："+basePath);
+			location.href = basePath+"sys/operate_log.htm?index=1&pageSize="+obj;
+		}
 	</script>
 </body>
 </html>

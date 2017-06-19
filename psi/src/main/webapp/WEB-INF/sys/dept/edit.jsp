@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改员工信息</title>
+<title>修改部门信息</title>
 
 <jsp:include page="/common.jsp"/>
 <link rel="stylesheet" href="<%=basePath %>css/layui.css">
@@ -19,28 +19,26 @@
 <script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>layer/layer.js"></script>
 <script type="text/javascript" >
-	function update(basePath){
-		alert(basePath+"<<<<");
-		$.getJSON(basePath+"role/updateSysRole.do",$("#roleFrm").serialize());
-		alert("DDDDDDDDDDDDDDDDDDDDDDD");
-// 		$.ajax({
-// 			url:basePath+"role/updateSysRole.do",
-// 			type:"post",
-// 			dataType:"json",
-// 			success:function(data){
-// 				alert(data);
-// 				/* $.each(data,function(index,k){
-// 					alert(k.id+" "+k.name+" "+k.age);
-// 				}); */
-// 			}
-// 		});
+	function update(){
+		$.ajax({
+			url:basePath+"test/four.do",
+			type:"post",
+			dataType:"json",
+			success:function(data){
+				alert(data);
+				/* $.each(data,function(index,k){
+					alert(k.id+" "+k.name+" "+k.age);
+				}); */
+			}
+		});
 	}
 </script>
 </head>
 
 
 <body style="background-color: white;">
-	<form id="roleFrm">
+	编辑部门信息页面
+	<%-- <form id="roleFrm">
 		<table border="0" width="80%">
 				<tr>
 					<td width="10%"></td>
@@ -58,12 +56,11 @@
 					<td></td>
 					<td>
 						<button id="updata" onclick="update('<%=basePath %>');" class="layui-btn layui-btn-radius use-btn">保存</button>
-						<!-- onclick="parent.layer.closeAll();" -->
-						<!-- <button  class="layui-btn layui-btn-radius layui-btn-primary use-btn">取消</button> -->
+						<button onclick="parent.layer.closeAll();" class="layui-btn layui-btn-radius layui-btn-primary use-btn">取消</button>
 					</td>
 				</tr>
 		</table>
-	</form>
+	</form> --%>
 	
 </body>
 </html>
