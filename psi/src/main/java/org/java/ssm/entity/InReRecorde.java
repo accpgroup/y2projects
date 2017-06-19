@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class InReRecorde {
+import java.io.Serializable;
+
+public class InReRecorde implements Serializable{
     private Integer id;
 
     private String inReCode;

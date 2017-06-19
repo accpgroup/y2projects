@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.yangfeimapper.YFInReGoodsMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.InReGoods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="in_amount" property="inAmount" jdbcType="INTEGER" />
+    <result column="in_re_code" property="inReCode" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+<!-- 插入一个入库单的商品 -->
+  <insert id="insert" parameterType="org.java.ssm.entity.InReGoods" >
+    insert into in_re_goods (id, goods_id, in_amount, 
+      in_re_code, remark)
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{inAmount,jdbcType=INTEGER}, 
+      #{inReCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  
+
+</mapper>

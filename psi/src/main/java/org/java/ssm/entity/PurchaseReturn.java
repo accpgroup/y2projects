@@ -1,8 +1,9 @@
 package org.java.ssm.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class PurchaseReturn {
+public class PurchaseReturn implements Serializable{
     private Integer id;
 
     private String recordeCode;

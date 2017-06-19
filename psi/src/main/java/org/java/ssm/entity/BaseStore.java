@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class BaseStore {
+import java.io.Serializable;
+
+public class BaseStore implements Serializable{
     private Integer stid;
 
     private String stname;

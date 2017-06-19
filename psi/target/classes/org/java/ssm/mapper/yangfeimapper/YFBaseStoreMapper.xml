@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.yangfeimapper.YFBaseStoreMapper" >
+
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.BaseStore" >
+    <id column="stId" property="stid" jdbcType="INTEGER" />
+    <result column="stName" property="stname" jdbcType="VARCHAR" />
+    <result column="stAddress" property="staddress" jdbcType="VARCHAR" />
+    <result column="stRemark" property="stremark" jdbcType="VARCHAR" />
+    <result column="createrId" property="createrid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="VARCHAR" />
+    <result column="isStatus" property="isstatus" jdbcType="CHAR" />
+  </resultMap>
+  
+  
+  <!--查询所有课用仓库 -->
+  <select id="getStores" resultType="org.java.ssm.entity.BaseStore">
+       select * from base_store
+  </select>
+</mapper>

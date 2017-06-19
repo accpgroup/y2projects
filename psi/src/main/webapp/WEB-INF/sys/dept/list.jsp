@@ -45,14 +45,15 @@
 						<div class="col-xs-12">
 						
 							<!-- 检索  -->
-							<form action="<%=basePath %>sys/operate_log.htm" method="post" name="Form" id="Form">
-								<input type="hidden" name="index" value="1">
+							<form action="<%=basePath %>dept/_list.htm" method="post" name="deptFrm" id="deptFrm">
+								<input type="hidden" name="index" value="${page.pageNum }">
+								<input type="hidden" name="pageSize" value="${page.pageSize }">
 								<table style="margin-top: 5px;">
 									<tr>
 										<td>
 											<div class="nav-search">
 												<span class="input-icon">
-													<input onkeyup="document.forms[0].submit();" value="" type="text" placeholder="这里输入关键词" class="nav-search-input"
+													<input onkeyup="document.forms[0].submit();" value="${queryVo.keywords }" type="text" placeholder="这里输入关键词" class="nav-search-input"
 													id="nav-search-input" autocomplete="off" name="keywords" /><i class="ace-icon fa fa-search nav-search-icon"></i>
 												</span>
 											</div>

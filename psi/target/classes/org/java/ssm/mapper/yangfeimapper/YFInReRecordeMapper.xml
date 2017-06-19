@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.yangfeimapper.YFInReRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.InReRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="in_re_code" property="inReCode" jdbcType="VARCHAR" />
+    <result column="in_re_type" property="inReType" jdbcType="VARCHAR" />
+    <result column="recorde_date" property="recordeDate" jdbcType="VARCHAR" />
+    <result column="repository_id" property="repositoryId" jdbcType="INTEGER" />
+    <result column="bill_code" property="billCode" jdbcType="VARCHAR" />
+    <result column="deal_emp_id" property="dealEmpId" jdbcType="INTEGER" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+  </resultMap>
+
+<!-- 新增入库单，插入一条数据 -->
+<insert id="insert" parameterType="org.java.ssm.entity.InReGoods">
+    insert into in_re_recorde (in_re_code, in_re_type, 
+      recorde_date, repository_id, bill_code, 
+      deal_emp_id, create_emp_id)
+    values (#{inReCode,jdbcType=VARCHAR}, #{inReType,jdbcType=VARCHAR}, 
+      #{recordeDate,jdbcType=VARCHAR}, #{repositoryId,jdbcType=INTEGER}, #{billCode,jdbcType=VARCHAR}, 
+      #{dealEmpId,jdbcType=INTEGER}, #{createEmpId,jdbcType=INTEGER})
+</insert>
+
+<!-- 根据分页对象查询结果集 -->
+<select id="selectByPage" parameterType="org.java.ssm.entity.InRePageInfo" resultMap="BaseResultMap">
+    select * from in_re_recorde  
+    <where>
+        <if test="repositoryId !=null and repositoryId != -1">
+            and repository_id = #{repositoryId}  
+        </if> 
+        <if test="inReType == '采购' ">
+            and  in_re_type = '采购'     
+        </if> 
+        <if test="inReType == '调拨' ">
+            and  in_re_type = '调拨'     
+        </if>
+        <if test="inReType == '销售退货' ">
+            and  in_re_type = '销售退货'     
+        </if>  
+        <if test="inReCode != null and inReCode != '' ">
+            and  in_re_code = #{inReCode}     
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and  recorde_date  &gt;  #{beginTime}     
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and  recorde_date   &lt;  #{endTime}     
+        </if>
+        <if test="dealEmpId !=null and dealEmpId != -1">
+            and  deal_emp_id = #{dealEmpId}
+        </if>
+        <if test="createEmpId !=null and createEmpId != -1">
+            and  create_emp_id = #{createEmpId}
+        </if>
+    </where>
+        limit #{startIndex} , #{count}
+</select>
+  
+   <!-- 获得指定条件 总条数 --> 
+   <select id="getAllCounts" parameterType="org.java.ssm.entity.InRePageInfo" resultType="int">
+      select count(*) from in_re_recorde
+      <where>
+        <if test="repositoryId !=null and repositoryId != -1">
+            and repository_id = #{repositoryId}  
+        </if> 
+        <if test="inReType == '采购' ">
+            and  in_re_type = '采购'     
+        </if> 
+        <if test="inReType == '调拨' ">
+            and  in_re_type = '调拨'     
+        </if>
+        <if test="inReType == '销售退货' ">
+            and  in_re_type = '销售退货'     
+        </if>  
+        <if test="inReCode != null and inReCode != '' ">
+            and  in_re_code = #{inReCode}     
+        </if>
+        <if test="beginTime != null and beginTime != '' ">
+            and  recorde_date  &gt;  #{beginTime}     
+        </if>
+        <if test="endTime != null and endTime != '' ">
+            and  recorde_date   &lt;  #{endTime}     
+        </if>
+        <if test="dealEmpId !=null and dealEmpId != -1">
+            and  deal_emp_id = #{dealEmpId}
+        </if>
+        <if test="createEmpId !=null and createEmpId != -1">
+            and  create_emp_id = #{createEmpId}
+        </if>
+      </where>
+   </select>  
+</mapper>

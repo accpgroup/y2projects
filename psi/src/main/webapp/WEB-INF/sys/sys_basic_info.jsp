@@ -74,10 +74,10 @@
 										<a href="<%=basePath%>sys/company_info.htm" target="mainFrm">公司信息</a>
 									</li>
 									<li>
-										<a href="<%=basePath%>sys/user_list.htm" target="mainFrm">员工管理</a>
+										<a href="<%=basePath%>company_user/_list.htm" target="mainFrm">员工管理</a>
 									</li>
 									<li>
-										<a href="<%=basePath%>sys/dept_list.htm" target="mainFrm">部门设置</a>
+										<a href="<%=basePath%>dept/_list.htm" target="mainFrm">部门设置</a>
 									</li>
 									<li>
 										<a href="<%=basePath%>sys/role_list.htm" target="mainFrm">角色权限设置</a>

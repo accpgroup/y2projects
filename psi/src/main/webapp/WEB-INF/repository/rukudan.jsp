@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -49,50 +50,81 @@
             	FormsComponents.init(); 
             });
         
-           //点击高级查询按钮
-           function gjSearch(){
-        	 
-        	 var s = $("#advanceCondition").css("display");  
-        	 if(s=="none"){
-        		 $("#advanceCondition").css("display","block"); 
-        	 }
-        	 if(s=="block"){
-        		 $("#advanceCondition").css("display","none"); 
-        	 }
-           }
+            
+            $(function(){
+            	 //点击高级查询按钮
+            	$("#gjSearch").click(function(){
+            	 var s = $("#advanceCondition").css("display");  
+               	 if(s=="none"){
+               		 $("#advanceCondition").css("display","block"); 
+               	 }
+               	 if(s=="block"){
+               		 $("#advanceCondition").css("display","none"); 
+               	 }
+            	});
+            	 
+            	//点击新增
+            	$("#addBtn").click(function(){
+            		
+            		 window.location.href="ruku/addRuKuDan.do";
+            	});
+            	 
+            	
+            	
+            	
+            	
+            	
+            	
+            });
+            
            //点击普通查询按钮
            function ptSerach(){
-        	   var date = $("#date_begin").val();
-        	   alert(date);
+        	   $("#inreForm").submit();
            }
            
-           //点击新增按钮
-           function addBtn(){
-        	   window.location.href="ruku/addRuKuDan.do";
+           function tiao(i){
+        	  $("#index").val(i);
+        	  $("#inreForm").submit();
            }
+           
+           
         </script>
 
 
 </head>
 	<body style="background-color: white">
+	<form action="ruku/loadAllRuKu.do" method="post" id="inreForm">
 	     <div><h2>入库单</h2></div>
-	     
          <table>
 		     <tr>
-				<td><select id="ruku_re" name="ruku_re" class="form-control" size="1">
+				<td><select id="st_id" name="repositoryId" class="form-control" size="1">
                        <option value="-1">全部仓库</option>
-                       
+                       <c:forEach items="${requestScope.stores }" var="s">
+                          <c:if test="${s.stid == requestScope.pageInfo.repositoryId}">
+                              <option value="${s.stid }" selected="selected">${s.stname }</option>
+                          </c:if>
+                          <c:if test="${s.stid != requestScope.pageInfo.repositoryId}">
+                              <option value="${s.stid }">${s.stname }</option>
+                          </c:if>
+                       </c:forEach>
                 </select></td>
-	            <td><select id="ruku_type" name="ruku_type" class="form-control" size="1">
-	                    <option value="0">全部类型</option>
-	                    
+	            <td><select id="inReType" name="inReType" class="form-control" size="1">
+	                    <option value="-1">全部类型</option>
+	                    <c:forEach items="${requestScope.mList }" var="map">
+                          <c:if test="${map.value == requestScope.pageInfo.inReType}">
+                              <option value="${map.value }" selected="selected">${map.value }</option>
+                          </c:if>
+                          <c:if test="${map.value != requestScope.pageInfo.inReType}">
+                              <option value="${map.value }">${map.value }</option>
+                          </c:if>
+                       </c:forEach>
 	            </select></td>
 	            <td>
 	               &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                              
-	                                              入库单号
+	                                              入库单号:&nbsp;&nbsp;
 	            </td>
 		         <td>
-                     <input type="text" id="ruku_billcode" name="ruku_billcode" class="form-control" placeholder="请输入">
+                     <input type="text" id="inReCode" name="inReCode" class="form-control" placeholder="请输入" value="${requestScope.pageInfo.inReCode }">
                  </td>
          
                 <td>
@@ -113,30 +145,44 @@
 		     <table>
 		       <tr>
 		         <td>&nbsp;&nbsp;
-		                                日期
+		                                日期:&nbsp;&nbsp;
 		         </td>
                 <td>
 					<div class="input-group input-daterange" data-date-format="yyyy-mm-dd">
-                                   <input type="text" id="date_begin" name="date_begin" class="form-control"  placeholder="起始日期">
+                                   <input type="text" id="beginTime" name="beginTime" class="form-control"  placeholder="起始日期" value="${requestScope.pageInfo.beginTime }">
                                    <span class="input-group-addon"><i class="fa fa-chevron-right"></i></span>
-                                   <input type="text" id="date_end" name="date_end" class="form-control"  placeholder="截止日期">
+                                   <input type="text" id="endTime" name="endTime" class="form-control"  placeholder="截止日期" value="${requestScope.pageInfo.endTime }">
                     </div>
                 </td>
 		         <td>
 		           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                     
-		                                 经手人
+		                                 经手人:&nbsp;&nbsp;
 		         </td>
-		         <td><select id="deal_emp" name="deal_emp" class="form-control" size="1">
+		         <td><select id="dealEmpId" name="dealEmpId" class="form-control" size="1">
                        <option value="-1">全部员工</option>
-                       
+                       <c:forEach items="${requestScope.users }" var="u">
+                          <c:if test="${u.id == requestScope.pageInfo.dealEmpId}">
+                              <option value="${u.id }" selected="selected">${u.cnname }</option>
+                          </c:if>
+                          <c:if test="${u.id != requestScope.pageInfo.dealEmpId}">
+                              <option value="${u.id }">${u.cnname }</option>
+                          </c:if>
+                       </c:forEach>
                 </select></td>
 		         <td>
 		            &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                  
-		                                    制单人
+		                                    制单人:&nbsp;&nbsp;
 		         </td>
-		         <td><select id="create_emp" name="create_emp" class="form-control" size="1">
-                       <option value="-1">全部仓库</option>
-                       
+		         <td><select id="createEmpId" name="createEmpId" class="form-control" size="1">
+                       <option value="-1">全部员工</option>
+                       <c:forEach items="${requestScope.users }" var="u">
+                          <c:if test="${u.id == requestScope.pageInfo.createEmpId}">
+                              <option value="${u.id }" selected="selected">${u.cnname }</option>
+                          </c:if>
+                          <c:if test="${u.id != requestScope.pageInfo.createEmpId}">
+                              <option value="${u.id }">${u.cnname }</option>
+                          </c:if>
+                       </c:forEach>
                 </select></td>
 		       </tr>
 		     </table>
@@ -160,54 +206,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="active">
-                                                    <td><strong>1</strong></td>
-                                                    <td><strong>1</strong></td>
-                                                    <td><strong>1</strong></td>
-                                                    <td><strong>1</strong></td>
-                                                    <td><strong>1</strong></td>
-                                                    <td><strong>1</strong></td>
-                                                    <td>user1@example.com</td>
-                                                    <td><a href="javascript:void(0)" class="label label-warning">Pending..</a></td>
+                                            <c:forEach items="${requestScope.pageInfo.inReList }" var="info" varStatus="k">
+                                                <c:if test="${k.count%2==1 }">
+                                                    <tr class="active">
+                                                </c:if>
+                                                <c:if test="${k.count%2==0 }">
+                                                    <tr class="success">
+                                                </c:if>
+                                                    <td>${k.count }</td>
+                                                    <td>${info.inReCode }</td>
+                                                    <td>
+                                                        <c:forEach items="${requestScope.stores }" var="s">
+                                                           <c:if test="${info.repositoryId==s.stid }">${s.stname }</c:if>
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td>${info.inReType }</td>
+                                                    <td>${info.recordeDate }</td>
+                                                    <td>${info.billCode }</td>
+                                                    <td>
+                                                        <c:forEach items="${requestScope.users }" var="u">
+                                                           <c:if test="${info.dealEmpId==u.id }">${u.cnname }</c:if>
+                                                        </c:forEach>
+                                                    </td>
+                                                    <td>
+                                                        <c:forEach items="${requestScope.users }" var="u">
+                                                           <c:if test="${info.createEmpId==u.id }">${u.cnname }</c:if>
+                                                        </c:forEach>
+                                                    </td>
                                                     <td class="text-center">
                                                         <a href="javascript:void(0)" data-toggle="tooltip" title="查看" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>
                                                         <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a>
                                                     </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>2</strong></td>
-                                                    <td><strong>2</strong></td>
-                                                    <td><strong>2</strong></td>
-                                                    <td><strong>2</strong></td>
-                                                    <td><strong>2</strong></td>
-                                                    <td><strong>2</strong></td>
-                                                    <td>user2@example.com</td>
-                                                    <td><a href="javascript:void(0)" class="label label-success">Active</a></td>
-                                                    <td class="text-center">
-                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="查看" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>
-                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <td><strong>3</strong></td>
-                                                    <td><strong>3</strong></td>
-                                                    <td><strong>3</strong></td>
-                                                    <td><strong>3</strong></td>
-                                                    <td><strong>3</strong></td>
-                                                    <td><strong>3</strong></td>
-                                                    <td>user3@example.com</td>
-                                                    <td><a href="javascript:void(0)" class="label label-info">On hold..</a></td>
-                                                    <td class="text-center">
-                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="查看" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>
-                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a>
-                                                    </td>
-                                                </tr>
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
+                                                    </tr>
+                                            </c:forEach>
+                                              
                                             </tbody>
                                         </table>
                                     </div>
@@ -221,23 +253,45 @@
                
             <!--分页指针 -->
             <div style="float: left;margin-top: 17px;">每页
-              <select>
-                <option>5</option>
-                <option>10</option>
-                <option>20</option>
+              <select id="page_count" name="count">
+                <c:if test="${requestScope.pageInfo.count==5 }">
+                   <option value="5" selected="selected">5</option>
+                   <option value="10">10</option>
+                   <option value="15">15</option>
+                </c:if>
+                <c:if test="${requestScope.pageInfo.count==10 }">
+                   <option value="5">5</option>
+                   <option value="10" selected="selected">10</option>
+                   <option value="15">15</option>
+                </c:if>
+                <c:if test="${requestScope.pageInfo.count==15 }">
+                   <option value="5">5</option>
+                   <option value="10">10</option>
+                   <option value="15" selected="selected">15</option>
+                </c:if>
               </select>
                                     条</div>                            
             <div class="text-right" style="float: right;">
                 <ul class="pagination pagination-sm">
-                    <li class="disabled"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
-                    <li><a href="javascript:void(0)">1</a></li>
-                    <li class="active"><a href="javascript:void(0)">2</a></li>
-                    <li><a href="javascript:void(0)">3</a></li>
-                    <li><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+                    <c:if test="${requestScope.pageInfo.index == 1 }">
+                      <li class="disabled"><a href="javascript:void(0)"><i class="fa fa-chevron-left"></i></a></li>
+                    </c:if>
+                    <c:if test="${requestScope.pageInfo.index != 1 }">
+                      <li><a href="javascript:tiao(${requestScope.pageInfo.index - 1})"><i class="fa fa-chevron-left"></i></a></li>
+                    </c:if>
+                    
+                    <li class="active"><a href="javascript:void(0)">${requestScope.pageInfo.index }</a></li>
+                    
+                    <c:if test="${requestScope.pageInfo.index == requestScope.pageInfo.maxPage}">
+                      <li class="disabled"><a href="javascript:void(0)"><i class="fa fa-chevron-right"></i></a></li>
+                    </c:if>
+                    <c:if test="${requestScope.pageInfo.index != requestScope.pageInfo.maxPage }">
+                      <li><a href="javascript:tiao(${requestScope.pageInfo.index + 1})"><i class="fa fa-chevron-right"></i></a></li>
+                    </c:if>
                     </ul>
            </div>							
-							
+			<input type="hidden" name="index" id="index"/><!-- 用来保存当前页数 -->				
 		
-	
+	</form>
 </body>
 </html>

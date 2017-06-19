@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class CheckGoods {
+import java.io.Serializable;
+
+public class CheckGoods implements Serializable{
     private Integer id;
 
     private Integer goodsId;

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.yangfeimapper.YFBaseGoodMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.BaseGood" >
+    <id column="gdId" property="gdid" jdbcType="INTEGER" />
+    <result column="gdName" property="gdname" jdbcType="VARCHAR" />
+    <result column="gdMemCode" property="gdmemcode" jdbcType="VARCHAR" />
+    <result column="gdWoocu" property="gdwoocu" jdbcType="VARCHAR" />
+    <result column="gdSort" property="gdsort" jdbcType="VARCHAR" />
+    <result column="gdType" property="gdtype" jdbcType="VARCHAR" />
+    <result column="gdNorms" property="gdnorms" jdbcType="VARCHAR" />
+    <result column="gdUnit" property="gdunit" jdbcType="VARCHAR" />
+    <result column="gdOrigin" property="gdorigin" jdbcType="VARCHAR" />
+    <result column="gdMax" property="gdmax" jdbcType="INTEGER" />
+    <result column="gdMin" property="gdmin" jdbcType="INTEGER" />
+    <result column="gdPrePrice" property="gdpreprice" jdbcType="DOUBLE" />
+    <result column="gdCosPrice" property="gdcosprice" jdbcType="DOUBLE" />
+    <result column="gdPostFree" property="gdpostfree" jdbcType="VARCHAR" />
+    <result column="gdRemark" property="gdremark" jdbcType="VARCHAR" />
+    <result column="createrId" property="createrid" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="DATE" />
+    <result column="updaterId" property="updaterid" jdbcType="INTEGER" />
+    <result column="updateTime" property="updatetime" jdbcType="DATE" />
+    <result column="delStatus" property="delstatus" jdbcType="CHAR" />
+  </resultMap>
+  
+ <!-- 查询所有商品信息 --> 
+  <select id="getAllGoods" resultType="org.java.ssm.entity.BaseGood">
+    select * from  base_good 
+  </select>
+</mapper>

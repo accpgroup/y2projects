@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class CheckRe {
+import java.io.Serializable;
+
+public class CheckRe implements Serializable{
     private Integer id;
 
     private String checkReCode;

@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class BaseBankinfo {
+import java.io.Serializable;
+
+public class BaseBankinfo implements Serializable{
     private Integer bfid;
 
     private String bfcardnum;

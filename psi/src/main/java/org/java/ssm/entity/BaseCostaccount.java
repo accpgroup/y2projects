@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class BaseCostaccount {
+import java.io.Serializable;
+
+public class BaseCostaccount implements Serializable{
     private Integer id;
 
     private String catouch;

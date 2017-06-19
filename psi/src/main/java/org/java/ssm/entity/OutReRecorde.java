@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class OutReRecorde {
+import java.io.Serializable;
+
+public class OutReRecorde implements Serializable{
     private Integer id;
 
     private String outReCode;

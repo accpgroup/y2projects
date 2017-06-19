@@ -52,17 +52,18 @@
 						<div class="col-xs-12">
 
 							<!-- 检索  -->
-							<form action="<%=basePath%>sys/operate_log.htm" method="post"
-								name="Form" id="Form">
-								<input type="hidden" name="index" value="1">
+							<form action="<%=basePath%>company_user/_list.htm" method="post"
+								name="empFrm" id="empFrm">
+								<input type="hidden" name="index" value="${page.pageNum }">
+								<input type="hidden" name="pageSize" value="${page.pageSize }">
 								<table>
 									<tr>
 										<td>
 											<div class="nav-search">
 												<span class="input-icon"> <input
-													onkeyup="document.forms[0].submit();" value="" type="text"
+													onkeyup="document.forms[0].submit();" value="${queryVo.userBean.keywords }" type="text"
 													placeholder="这里输入关键词" class="nav-search-input"
-													id="nav-search-input" autocomplete="off" name="keywords" /><i
+													id="nav-search-input" autocomplete="off" name="userBean.keywords" /><i
 													class="ace-icon fa fa-search nav-search-icon"></i>
 												</span>
 											</div>

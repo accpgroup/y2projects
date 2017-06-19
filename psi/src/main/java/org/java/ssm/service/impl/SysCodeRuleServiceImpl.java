@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.text.TabableView;
+
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.java.ssm.mapper.SysCodeRuleMapper;
 import org.java.ssm.service.SysCodeRuleService;
@@ -22,7 +24,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SysCodeRuleServiceImpl implements SysCodeRuleService {
-
+    
+	private String code;
+	
 	@Autowired
 	private SysCodeRuleMapper mapper;
 	
@@ -50,7 +54,7 @@ public class SysCodeRuleServiceImpl implements SysCodeRuleService {
 			String curDate = DateUtil.getTodateString();
 
 			// 生成编码
-			String code = sysCodeRule.get("areaPrefix") + "-"
+			code = sysCodeRule.get("areaPrefix") + "-"
 					+ DateFormatUtils.format(new Date(), (String) sysCodeRule.get("areaTime")) + "-" + firstGlideNumber;
 
 			// 设置下一个流水号的值
@@ -81,7 +85,7 @@ public class SysCodeRuleServiceImpl implements SysCodeRuleService {
 
 				// * 生成编码
 				// * 编码前缀+"-"+利用日期位格式生成当前的日期[yyyy-MM-dd ]+"-"+001
-				String code = sysCodeRule.get("areaPrefix") + "-"
+				code = sysCodeRule.get("areaPrefix") + "-"
 						+ DateFormatUtils.format(new Date(), (String) sysCodeRule.get("areaTime")) + "-" + nextseq;
 				// * 修改代码规则表
 				// * 下一个序列号="003"
@@ -102,7 +106,7 @@ public class SysCodeRuleServiceImpl implements SysCodeRuleService {
 				// * 生成客户编码
 				// * 编码前缀+"-"+利用日期位格式生成当前的日期[yyyy-MM-dd ]+"-"+001
 
-				String code = sysCodeRule.get("areaPrefix") + "-"
+				code = sysCodeRule.get("areaPrefix") + "-"
 						+ DateFormatUtils.format(new Date(), (String) sysCodeRule.get("areaTime")) + "-" + firstGlideNumber;
 
 				// * 修改代码规则表
@@ -119,7 +123,7 @@ public class SysCodeRuleServiceImpl implements SysCodeRuleService {
 			}
 		}
 		
-		return null;
+		return code;
 	}
 
 	@Override
@@ -131,7 +135,7 @@ public class SysCodeRuleServiceImpl implements SysCodeRuleService {
 	@Override
 	public List<Map<String, Object>> findSysCodeRules(String tabName) {
 		//返回查询结果
-		return mapper.findSysCodeRules("client");
+		return mapper.findSysCodeRules(tabName);
 	}
 
 	@Override

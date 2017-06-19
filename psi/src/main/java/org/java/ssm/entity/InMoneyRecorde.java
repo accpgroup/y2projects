@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class InMoneyRecorde {
+import java.io.Serializable;
+
+public class InMoneyRecorde implements Serializable{
     private Integer id;
 
     private String inMoneyCode;

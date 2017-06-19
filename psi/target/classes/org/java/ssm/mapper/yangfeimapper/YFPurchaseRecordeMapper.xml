@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.yangfeimapper.YFPurchaseRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.PurchaseRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="recorde_code" property="recordeCode" jdbcType="VARCHAR" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="repository_id" property="repositoryId" jdbcType="INTEGER" />
+    <result column="total_money" property="totalMoney" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  
+<!-- 查询出所有的单号 --> 
+<select id="getAllBills" resultType="String">
+  select pr.recorde_code from purchase_recorde pr
+</select>
+   
+   
+  
+   
+</mapper>

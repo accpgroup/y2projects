@@ -6,6 +6,7 @@ import java.util.Map;
 import org.java.ssm.mapper.SysDictionaryTypeMapper;
 import org.java.ssm.service.SysDictionaryTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * 系统数据字典Service接口的实现类
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2017年6月7日 上午11:41:59 
  *
  */
+@Service
 public class SysDictionaryTypeServiceImpl implements SysDictionaryTypeService{
 
 	@Autowired

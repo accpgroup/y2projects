@@ -1,8 +1,9 @@
 package org.java.ssm.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BaseGood {
+public class BaseGood implements Serializable {
     private Integer gdid;
 
     private String gdname;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.yangfeimapper.YFAllotRecordeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.AllotRecorde" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="allot_code" property="allotCode" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="out_repository_id" property="outRepositoryId" jdbcType="INTEGER" />
+    <result column="in_repository_id" property="inRepositoryId" jdbcType="INTEGER" />
+    <result column="create_emp_id" property="createEmpId" jdbcType="INTEGER" />
+    <result column="assess_emp_id" property="assessEmpId" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+ <!-- 查询出所有的单号 --> 
+<select id="getAllBills" resultType="String">
+  select ar.allot_code from allot_recorde ar
+</select>
+ 
+</mapper>

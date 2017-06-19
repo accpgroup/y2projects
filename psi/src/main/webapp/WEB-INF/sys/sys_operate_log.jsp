@@ -45,9 +45,10 @@
 						<div class="col-xs-12">
 						
 							<!-- 检索  -->
-							<form action="<%=basePath %>sys/operate_log.htm" method="post" name="Form" id="Form">
-								<input type="hidden" name="index" value="1">
-								<table style="margin-top: 5px;">
+							<form action="<%=basePath %>sys/operate_log.htm" method="post" name="logFrm" id="logFrm">
+								<input type="hidden" name="index" value="${page.pageNum }">
+								<input type="hidden" name="pageSize" value="${page.pageSize }">
+								<table ><!-- style="margin-top: 5px;" -->
 									<tr>
 										<td>
 											<div class="nav-search">

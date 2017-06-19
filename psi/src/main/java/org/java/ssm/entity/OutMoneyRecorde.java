@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class OutMoneyRecorde {
+import java.io.Serializable;
+
+public class OutMoneyRecorde implements Serializable{
     private Integer id;
 
     private String outMoenyCode;

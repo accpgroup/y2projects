@@ -1,8 +1,9 @@
 package org.java.ssm.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BaseUnit {
+public class BaseUnit implements Serializable{
     private Integer id;
 
     private String unitname;

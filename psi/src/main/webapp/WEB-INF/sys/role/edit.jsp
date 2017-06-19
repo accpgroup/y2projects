@@ -15,6 +15,27 @@
 <jsp:include page="/common.jsp"/>
 <link rel="stylesheet" href="<%=basePath %>css/layui.css">
 <link rel="stylesheet" href="<%=basePath %>css/use.css">
+
+<script src="<%=basePath%>js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="<%=basePath %>layer/layer.js"></script>
+<script type="text/javascript" >
+	function update(basePath){
+		alert(basePath+"<<<<");
+		$.getJSON(basePath+"role/updateSysRole.do",$("#roleFrm").serialize());
+		alert("DDDDDDDDDDDDDDDDDDDDDDD");
+// 		$.ajax({
+// 			url:basePath+"role/updateSysRole.do",
+// 			type:"post",
+// 			dataType:"json",
+// 			success:function(data){
+// 				alert(data);
+// 				/* $.each(data,function(index,k){
+// 					alert(k.id+" "+k.name+" "+k.age);
+// 				}); */
+// 			}
+// 		});
+	}
+</script>
 </head>
 <body style="background-color: white;">
 	<form id="roleFrm">

@@ -1,6 +1,8 @@
 package org.java.ssm.entity;
 
-public class AllotRecorde {
+import java.io.Serializable;
+
+public class AllotRecorde implements Serializable{
     private Integer id;
 
     private String allotCode;
