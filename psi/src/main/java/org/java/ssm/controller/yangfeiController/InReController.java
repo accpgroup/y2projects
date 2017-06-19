@@ -48,6 +48,6 @@ public class InReController {
 		
 		inReGoodsSer.insert(inReList);//保存商品明细
 		
-		return "/repository/rukudan";
+		return "redirect:/ruku/loadAllRuKu.do";
 	}
 }

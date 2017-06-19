@@ -69,7 +69,9 @@
             		 window.location.href="ruku/addRuKuDan.do";
             	});
             	 
-            	
+            	$("#page_count").change(function(){
+            		$("#inreForm").submit();
+            	});
             	
             	
             	
@@ -290,7 +292,7 @@
                     </c:if>
                     </ul>
            </div>							
-			<input type="hidden" name="index" id="index"/><!-- 用来保存当前页数 -->				
+			<input type="hidden" name="index" id="index" value="${requestScope.pageInfo.index}"/><!-- 用来保存当前页数 -->				
 		
 	</form>
 </body>
