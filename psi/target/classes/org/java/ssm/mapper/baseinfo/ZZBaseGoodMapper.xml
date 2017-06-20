@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.baseinfo.ZZBaseGoodMapper">
+	<select id="findAll" resultType="org.java.ssm.entity.baseinfo.ZZBaseGood" parameterType="org.java.ssm.entity.baseinfo.ZZGoodHelper">
+		select
+		*
+		from base_good 
+	 	where 1=1  and delStatus='Y'  
+        <if test="gdname != '' and gdname != null">  
+            and gdName like '%${gdname}%'   
+        </if>  
+        <if test="gdmemcode != '' and gdmemcode != null">  
+            and gdMemCode like '%${gdmemcode}%' 
+        </if>  
+         <if test="gdsort != '' and gdsort != null">  
+            and gdSort like '%${gdsort}%' 
+        </if>
+        <if test="gdnorms != '' and gdnorms != null">  
+            and gdNorms like '%${gdnorms}%' 
+        </if>
+    	order by gdId desc
+	</select>
+
+	<resultMap id="BaseResultMap" type="org.java.ssm.entity.baseinfo.ZZBaseGood">
+		<id column="gdId" property="gdid" jdbcType="INTEGER" />
+		<result column="gdName" property="gdname" jdbcType="VARCHAR" />
+		<result column="gdMemCode" property="gdmemcode" jdbcType="VARCHAR" />
+		<result column="gdWoocu" property="gdwoocu" jdbcType="VARCHAR" />
+		<result column="gdSort" property="gdsort" jdbcType="VARCHAR" />
+		<result column="gdType" property="gdtype" jdbcType="VARCHAR" />
+		<result column="gdNorms" property="gdnorms" jdbcType="VARCHAR" />
+		<result column="gdUnit" property="gdunit" jdbcType="VARCHAR" />
+		<result column="gdOrigin" property="gdorigin" jdbcType="VARCHAR" />
+		<result column="gdMax" property="gdmax" jdbcType="INTEGER" />
+		<result column="gdMin" property="gdmin" jdbcType="INTEGER" />
+		<result column="gdPrePrice" property="gdpreprice" jdbcType="DOUBLE" />
+		<result column="gdCosPrice" property="gdcosprice" jdbcType="DOUBLE" />
+		<result column="gdPostFree" property="gdpostfree" jdbcType="VARCHAR" />
+		<result column="gdRemark" property="gdremark" jdbcType="VARCHAR" />
+		<result column="createrId" property="createrid" jdbcType="INTEGER" />
+		<result column="createTime" property="createtime" jdbcType="DATE" />
+		<result column="updaterId" property="updaterid" jdbcType="INTEGER" />
+		<result column="updateTime" property="updatetime" jdbcType="DATE" />
+		<result column="delStatus" property="delstatus" jdbcType="CHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		gdId, gdName, gdMemCode, gdWoocu, gdSort, gdType, gdNorms, gdUnit,
+		gdOrigin, gdMax,
+		gdMin, gdPrePrice, gdCosPrice, gdPostFree, gdRemark, createrId, createTime,
+		updaterId,
+		updateTime, delStatus
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from base_good
+		where gdId = #{gdid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from base_good
+		where gdId = #{gdid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="org.java.ssm.entity.baseinfo.ZZBaseGood">
+		insert into base_good (gdId, gdName, gdMemCode,
+		gdWoocu, gdSort, gdType,
+		gdNorms, gdUnit, gdOrigin,
+		gdMax, gdMin, gdPrePrice,
+		gdCosPrice, gdPostFree, gdRemark,
+		createrId, createTime, updaterId,
+		updateTime, delStatus)
+		values (#{gdid,jdbcType=INTEGER}, #{gdname,jdbcType=VARCHAR},
+		#{gdmemcode,jdbcType=VARCHAR},
+		#{gdwoocu,jdbcType=VARCHAR}, #{gdsort,jdbcType=VARCHAR}, #{gdtype,jdbcType=VARCHAR},
+		#{gdnorms,jdbcType=VARCHAR}, #{gdunit,jdbcType=VARCHAR},
+		#{gdorigin,jdbcType=VARCHAR},
+		#{gdmax,jdbcType=INTEGER}, #{gdmin,jdbcType=INTEGER}, #{gdpreprice,jdbcType=DOUBLE},
+		#{gdcosprice,jdbcType=DOUBLE}, #{gdpostfree,jdbcType=VARCHAR},
+		#{gdremark,jdbcType=VARCHAR},
+		#{createrid,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}, #{updaterid,jdbcType=INTEGER},
+		#{updatetime,jdbcType=DATE}, #{delstatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseGood">
+		insert into base_good
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="gdid != null">
+				gdId,
+			</if>
+			<if test="gdname != null">
+				gdName,
+			</if>
+			<if test="gdmemcode != null">
+				gdMemCode,
+			</if>
+			<if test="gdwoocu != null">
+				gdWoocu,
+			</if>
+			<if test="gdsort != null">
+				gdSort,
+			</if>
+			<if test="gdtype != null">
+				gdType,
+			</if>
+			<if test="gdnorms != null">
+				gdNorms,
+			</if>
+			<if test="gdunit != null">
+				gdUnit,
+			</if>
+			<if test="gdorigin != null">
+				gdOrigin,
+			</if>
+			<if test="gdmax != null">
+				gdMax,
+			</if>
+			<if test="gdmin != null">
+				gdMin,
+			</if>
+			<if test="gdpreprice != null">
+				gdPrePrice,
+			</if>
+			<if test="gdcosprice != null">
+				gdCosPrice,
+			</if>
+			<if test="gdpostfree != null">
+				gdPostFree,
+			</if>
+			<if test="gdremark != null">
+				gdRemark,
+			</if>
+			<if test="createrid != null">
+				createrId,
+			</if>
+			<if test="createtime != null">
+				createTime,
+			</if>
+			<if test="updaterid != null">
+				updaterId,
+			</if>
+			<if test="updatetime != null">
+				updateTime,
+			</if>
+			<if test="delstatus != null">
+				delStatus,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="gdid != null">
+				#{gdid,jdbcType=INTEGER},
+			</if>
+			<if test="gdname != null">
+				#{gdname,jdbcType=VARCHAR},
+			</if>
+			<if test="gdmemcode != null">
+				#{gdmemcode,jdbcType=VARCHAR},
+			</if>
+			<if test="gdwoocu != null">
+				#{gdwoocu,jdbcType=VARCHAR},
+			</if>
+			<if test="gdsort != null">
+				#{gdsort,jdbcType=VARCHAR},
+			</if>
+			<if test="gdtype != null">
+				#{gdtype,jdbcType=VARCHAR},
+			</if>
+			<if test="gdnorms != null">
+				#{gdnorms,jdbcType=VARCHAR},
+			</if>
+			<if test="gdunit != null">
+				#{gdunit,jdbcType=VARCHAR},
+			</if>
+			<if test="gdorigin != null">
+				#{gdorigin,jdbcType=VARCHAR},
+			</if>
+			<if test="gdmax != null">
+				#{gdmax,jdbcType=INTEGER},
+			</if>
+			<if test="gdmin != null">
+				#{gdmin,jdbcType=INTEGER},
+			</if>
+			<if test="gdpreprice != null">
+				#{gdpreprice,jdbcType=DOUBLE},
+			</if>
+			<if test="gdcosprice != null">
+				#{gdcosprice,jdbcType=DOUBLE},
+			</if>
+			<if test="gdpostfree != null">
+				#{gdpostfree,jdbcType=VARCHAR},
+			</if>
+			<if test="gdremark != null">
+				#{gdremark,jdbcType=VARCHAR},
+			</if>
+			<if test="createrid != null">
+				#{createrid,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=DATE},
+			</if>
+			<if test="updaterid != null">
+				#{updaterid,jdbcType=INTEGER},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=DATE},
+			</if>
+			<if test="delstatus != null">
+				#{delstatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseGood">
+		update base_good
+		<set>
+			<if test="gdname != null">
+				gdName = #{gdname,jdbcType=VARCHAR},
+			</if>
+			<if test="gdmemcode != null">
+				gdMemCode = #{gdmemcode,jdbcType=VARCHAR},
+			</if>
+			<if test="gdwoocu != null">
+				gdWoocu = #{gdwoocu,jdbcType=VARCHAR},
+			</if>
+			<if test="gdsort != null">
+				gdSort = #{gdsort,jdbcType=VARCHAR},
+			</if>
+			<if test="gdtype != null">
+				gdType = #{gdtype,jdbcType=VARCHAR},
+			</if>
+			<if test="gdnorms != null">
+				gdNorms = #{gdnorms,jdbcType=VARCHAR},
+			</if>
+			<if test="gdunit != null">
+				gdUnit = #{gdunit,jdbcType=VARCHAR},
+			</if>
+			<if test="gdorigin != null">
+				gdOrigin = #{gdorigin,jdbcType=VARCHAR},
+			</if>
+			<if test="gdmax != null">
+				gdMax = #{gdmax,jdbcType=INTEGER},
+			</if>
+			<if test="gdmin != null">
+				gdMin = #{gdmin,jdbcType=INTEGER},
+			</if>
+			<if test="gdpreprice != null">
+				gdPrePrice = #{gdpreprice,jdbcType=DOUBLE},
+			</if>
+			<if test="gdcosprice != null">
+				gdCosPrice = #{gdcosprice,jdbcType=DOUBLE},
+			</if>
+			<if test="gdpostfree != null">
+				gdPostFree = #{gdpostfree,jdbcType=VARCHAR},
+			</if>
+			<if test="gdremark != null">
+				gdRemark = #{gdremark,jdbcType=VARCHAR},
+			</if>
+			<if test="createrid != null">
+				createrId = #{createrid,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				createTime = #{createtime,jdbcType=DATE},
+			</if>
+			<if test="updaterid != null">
+				updaterId = #{updaterid,jdbcType=INTEGER},
+			</if>
+			<if test="updatetime != null">
+				updateTime = #{updatetime,jdbcType=DATE},
+			</if>
+			<if test="delstatus != null">
+				delStatus = #{delstatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where gdId = #{gdid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.baseinfo.ZZBaseGood">
+		update base_good
+		set gdName = #{gdname,jdbcType=VARCHAR},
+		gdMemCode = #{gdmemcode,jdbcType=VARCHAR},
+		gdWoocu = #{gdwoocu,jdbcType=VARCHAR},
+		gdSort = #{gdsort,jdbcType=VARCHAR},
+		gdType = #{gdtype,jdbcType=VARCHAR},
+		gdNorms = #{gdnorms,jdbcType=VARCHAR},
+		gdUnit = #{gdunit,jdbcType=VARCHAR},
+		gdOrigin = #{gdorigin,jdbcType=VARCHAR},
+		gdMax = #{gdmax,jdbcType=INTEGER},
+		gdMin = #{gdmin,jdbcType=INTEGER},
+		gdPrePrice = #{gdpreprice,jdbcType=DOUBLE},
+		gdCosPrice = #{gdcosprice,jdbcType=DOUBLE},
+		gdPostFree = #{gdpostfree,jdbcType=VARCHAR},
+		gdRemark = #{gdremark,jdbcType=VARCHAR},
+		createrId = #{createrid,jdbcType=INTEGER},
+		createTime = #{createtime,jdbcType=DATE},
+		updaterId = #{updaterid,jdbcType=INTEGER},
+		updateTime = #{updatetime,jdbcType=DATE},
+		delStatus = #{delstatus,jdbcType=CHAR}
+		where gdId = #{gdid,jdbcType=INTEGER}
+	</update>
+</mapper>

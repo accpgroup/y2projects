@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.baseinfo.ZZBaseAjaxMapper">
+	<select id="loadByUnit" resultType="java.util.HashMap">
+		SELECT
+		code,value
+		FROM
+		sys_dictionary_type s
+		WHERE
+		s.`code` = 'regionName' OR
+		s.`code` = 'unitSort' OR
+		s.`code` = 'trade' OR
+		s.`code` = 'unitCustomer' OR
+		s.`code` = 'pay_way' OR
+		s.`code` = 'kind'
+	</select>
+	
+	<select id="loadByGood" resultType="java.util.HashMap">
+		SELECT
+		code,value
+		FROM
+		sys_dictionary_type s
+		WHERE
+		s.`code` = 'gd_woocu' OR
+		s.`code` = 'gd_sort' OR
+		s.`code` = 'p_unit' OR
+		s.`code` = 'origin'
+	</select>
+</mapper>

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.baseinfo.ZZBaseUnitMapper">
+	<select id="findAll" resultType="org.java.ssm.entity.baseinfo.ZZBaseUnit"
+		parameterType="org.java.ssm.entity.baseinfo.ZZUnitHelper">
+		select 
+		* 
+		from base_unit
+		where 1=1 and delStatus='Y'
+		<if test="unitName != '' and unitName != null">
+			and unitName like '%${unitName}%'
+		</if>
+		<if test="unitMemCode != '' and unitMemCode != null">
+			and unitMemCode like '%${unitMemCode}%'
+		</if>
+		<if test="unitLinkMan1 != '' and unitLinkMan1 != null">
+			and unitLinkMan1 like '%${unitLinkMan1}%'
+		</if>
+		order by id desc
+	</select>
+
+	<resultMap id="BaseResultMap" type="org.java.ssm.entity.baseinfo.ZZBaseUnit">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="unitName" property="unitname" jdbcType="VARCHAR" />
+		<result column="unitSname" property="unitsname" jdbcType="VARCHAR" />
+		<result column="unitNature" property="unitnature" jdbcType="VARCHAR" />
+		<result column="unitMemCode" property="unitmemcode" jdbcType="VARCHAR" />
+		<result column="unitRegion" property="unitregion" jdbcType="VARCHAR" />
+		<result column="unitTrade" property="unittrade" jdbcType="VARCHAR" />
+		<result column="unitSort" property="unitsort" jdbcType="VARCHAR" />
+		<result column="unitLinkMan1" property="unitlinkman1" jdbcType="VARCHAR" />
+		<result column="unitLinkMan2" property="unitlinkman2" jdbcType="VARCHAR" />
+		<result column="unitDuty" property="unitduty" jdbcType="VARCHAR" />
+		<result column="unitAddress" property="unitaddress" jdbcType="VARCHAR" />
+		<result column="unitCcount" property="unitccount" jdbcType="VARCHAR" />
+		<result column="unitAccount" property="unitaccount" jdbcType="VARCHAR" />
+		<result column="unitCable" property="unitcable" jdbcType="VARCHAR" />
+		<result column="unitSerCall" property="unitsercall" jdbcType="VARCHAR" />
+		<result column="unitLegal" property="unitlegal" jdbcType="VARCHAR" />
+		<result column="unitFanPhone" property="unitfanphone" jdbcType="VARCHAR" />
+		<result column="unitZipCode" property="unitzipcode" jdbcType="VARCHAR" />
+		<result column="unitSalaMan" property="unitsalaman" jdbcType="VARCHAR" />
+		<result column="unitFax" property="unitfax" jdbcType="VARCHAR" />
+		<result column="unitMobPhone" property="unitmobphone" jdbcType="VARCHAR" />
+		<result column="unitEmail" property="unitemail" jdbcType="VARCHAR" />
+		<result column="unitCustomer" property="unitcustomer" jdbcType="VARCHAR" />
+		<result column="unitHttp" property="unithttp" jdbcType="VARCHAR" />
+		<result column="unitCollAddress" property="unitcolladdress"
+			jdbcType="VARCHAR" />
+		<result column="unitMainBiss" property="unitmainbiss" jdbcType="VARCHAR" />
+		<result column="unitPayway" property="unitpayway" jdbcType="VARCHAR" />
+		<result column="unitRemark" property="unitremark" jdbcType="VARCHAR" />
+		<result column="createrId" property="createrid" jdbcType="INTEGER" />
+		<result column="createTime" property="createtime" jdbcType="DATE" />
+		<result column="updaterId" property="updaterid" jdbcType="INTEGER" />
+		<result column="updaterTime" property="updatertime" jdbcType="DATE" />
+		<result column="delStatus" property="delstatus" jdbcType="CHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, unitName, unitSname, unitNature, unitMemCode, unitRegion, unitTrade,
+		unitSort,
+		unitLinkMan1, unitLinkMan2, unitDuty, unitAddress, unitCcount, unitAccount,
+		unitCable,
+		unitSerCall, unitLegal, unitFanPhone, unitZipCode, unitSalaMan, unitFax,
+		unitMobPhone,
+		unitEmail, unitCustomer, unitHttp, unitCollAddress, unitMainBiss, unitPayway,
+		unitRemark,
+		createrId, createTime, updaterId, updaterTime, delStatus
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from base_unit
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from base_unit
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="org.java.ssm.entity.baseinfo.ZZBaseUnit">
+		insert into base_unit (id, unitName, unitSname,
+		unitNature, unitMemCode, unitRegion,
+		unitTrade, unitSort, unitLinkMan1,
+		unitLinkMan2, unitDuty, unitAddress,
+		unitCcount, unitAccount, unitCable,
+		unitSerCall, unitLegal, unitFanPhone,
+		unitZipCode, unitSalaMan, unitFax,
+		unitMobPhone, unitEmail, unitCustomer,
+		unitHttp, unitCollAddress, unitMainBiss,
+		unitPayway, unitRemark, createrId,
+		createTime, updaterId, updaterTime,
+		delStatus)
+		values (#{id,jdbcType=INTEGER}, #{unitname,jdbcType=VARCHAR},
+		#{unitsname,jdbcType=VARCHAR},
+		#{unitnature,jdbcType=VARCHAR}, #{unitmemcode,jdbcType=VARCHAR}, #{unitregion,jdbcType=VARCHAR},
+		#{unittrade,jdbcType=VARCHAR}, #{unitsort,jdbcType=VARCHAR},
+		#{unitlinkman1,jdbcType=VARCHAR},
+		#{unitlinkman2,jdbcType=VARCHAR}, #{unitduty,jdbcType=VARCHAR}, #{unitaddress,jdbcType=VARCHAR},
+		#{unitccount,jdbcType=VARCHAR}, #{unitaccount,jdbcType=VARCHAR},
+		#{unitcable,jdbcType=VARCHAR},
+		#{unitsercall,jdbcType=VARCHAR}, #{unitlegal,jdbcType=VARCHAR}, #{unitfanphone,jdbcType=VARCHAR},
+		#{unitzipcode,jdbcType=VARCHAR}, #{unitsalaman,jdbcType=VARCHAR},
+		#{unitfax,jdbcType=VARCHAR},
+		#{unitmobphone,jdbcType=VARCHAR}, #{unitemail,jdbcType=VARCHAR}, #{unitcustomer,jdbcType=VARCHAR},
+		#{unithttp,jdbcType=VARCHAR}, #{unitcolladdress,jdbcType=VARCHAR},
+		#{unitmainbiss,jdbcType=VARCHAR},
+		#{unitpayway,jdbcType=VARCHAR}, #{unitremark,jdbcType=VARCHAR}, #{createrid,jdbcType=INTEGER},
+		#{createtime,jdbcType=DATE}, #{updaterid,jdbcType=INTEGER},
+		#{updatertime,jdbcType=DATE},
+		#{delstatus,jdbcType=CHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseUnit">
+		insert into base_unit
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="unitname != null">
+				unitName,
+			</if>
+			<if test="unitsname != null">
+				unitSname,
+			</if>
+			<if test="unitnature != null">
+				unitNature,
+			</if>
+			<if test="unitmemcode != null">
+				unitMemCode,
+			</if>
+			<if test="unitregion != null">
+				unitRegion,
+			</if>
+			<if test="unittrade != null">
+				unitTrade,
+			</if>
+			<if test="unitsort != null">
+				unitSort,
+			</if>
+			<if test="unitlinkman1 != null">
+				unitLinkMan1,
+			</if>
+			<if test="unitlinkman2 != null">
+				unitLinkMan2,
+			</if>
+			<if test="unitduty != null">
+				unitDuty,
+			</if>
+			<if test="unitaddress != null">
+				unitAddress,
+			</if>
+			<if test="unitccount != null">
+				unitCcount,
+			</if>
+			<if test="unitaccount != null">
+				unitAccount,
+			</if>
+			<if test="unitcable != null">
+				unitCable,
+			</if>
+			<if test="unitsercall != null">
+				unitSerCall,
+			</if>
+			<if test="unitlegal != null">
+				unitLegal,
+			</if>
+			<if test="unitfanphone != null">
+				unitFanPhone,
+			</if>
+			<if test="unitzipcode != null">
+				unitZipCode,
+			</if>
+			<if test="unitsalaman != null">
+				unitSalaMan,
+			</if>
+			<if test="unitfax != null">
+				unitFax,
+			</if>
+			<if test="unitmobphone != null">
+				unitMobPhone,
+			</if>
+			<if test="unitemail != null">
+				unitEmail,
+			</if>
+			<if test="unitcustomer != null">
+				unitCustomer,
+			</if>
+			<if test="unithttp != null">
+				unitHttp,
+			</if>
+			<if test="unitcolladdress != null">
+				unitCollAddress,
+			</if>
+			<if test="unitmainbiss != null">
+				unitMainBiss,
+			</if>
+			<if test="unitpayway != null">
+				unitPayway,
+			</if>
+			<if test="unitremark != null">
+				unitRemark,
+			</if>
+			<if test="createrid != null">
+				createrId,
+			</if>
+			<if test="createtime != null">
+				createTime,
+			</if>
+			<if test="updaterid != null">
+				updaterId,
+			</if>
+			<if test="updatertime != null">
+				updaterTime,
+			</if>
+			<if test="delstatus != null">
+				delStatus,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="unitname != null">
+				#{unitname,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsname != null">
+				#{unitsname,jdbcType=VARCHAR},
+			</if>
+			<if test="unitnature != null">
+				#{unitnature,jdbcType=VARCHAR},
+			</if>
+			<if test="unitmemcode != null">
+				#{unitmemcode,jdbcType=VARCHAR},
+			</if>
+			<if test="unitregion != null">
+				#{unitregion,jdbcType=VARCHAR},
+			</if>
+			<if test="unittrade != null">
+				#{unittrade,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsort != null">
+				#{unitsort,jdbcType=VARCHAR},
+			</if>
+			<if test="unitlinkman1 != null">
+				#{unitlinkman1,jdbcType=VARCHAR},
+			</if>
+			<if test="unitlinkman2 != null">
+				#{unitlinkman2,jdbcType=VARCHAR},
+			</if>
+			<if test="unitduty != null">
+				#{unitduty,jdbcType=VARCHAR},
+			</if>
+			<if test="unitaddress != null">
+				#{unitaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="unitccount != null">
+				#{unitccount,jdbcType=VARCHAR},
+			</if>
+			<if test="unitaccount != null">
+				#{unitaccount,jdbcType=VARCHAR},
+			</if>
+			<if test="unitcable != null">
+				#{unitcable,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsercall != null">
+				#{unitsercall,jdbcType=VARCHAR},
+			</if>
+			<if test="unitlegal != null">
+				#{unitlegal,jdbcType=VARCHAR},
+			</if>
+			<if test="unitfanphone != null">
+				#{unitfanphone,jdbcType=VARCHAR},
+			</if>
+			<if test="unitzipcode != null">
+				#{unitzipcode,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsalaman != null">
+				#{unitsalaman,jdbcType=VARCHAR},
+			</if>
+			<if test="unitfax != null">
+				#{unitfax,jdbcType=VARCHAR},
+			</if>
+			<if test="unitmobphone != null">
+				#{unitmobphone,jdbcType=VARCHAR},
+			</if>
+			<if test="unitemail != null">
+				#{unitemail,jdbcType=VARCHAR},
+			</if>
+			<if test="unitcustomer != null">
+				#{unitcustomer,jdbcType=VARCHAR},
+			</if>
+			<if test="unithttp != null">
+				#{unithttp,jdbcType=VARCHAR},
+			</if>
+			<if test="unitcolladdress != null">
+				#{unitcolladdress,jdbcType=VARCHAR},
+			</if>
+			<if test="unitmainbiss != null">
+				#{unitmainbiss,jdbcType=VARCHAR},
+			</if>
+			<if test="unitpayway != null">
+				#{unitpayway,jdbcType=VARCHAR},
+			</if>
+			<if test="unitremark != null">
+				#{unitremark,jdbcType=VARCHAR},
+			</if>
+			<if test="createrid != null">
+				#{createrid,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=DATE},
+			</if>
+			<if test="updaterid != null">
+				#{updaterid,jdbcType=INTEGER},
+			</if>
+			<if test="updatertime != null">
+				#{updatertime,jdbcType=DATE},
+			</if>
+			<if test="delstatus != null">
+				#{delstatus,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	<!-- 根据主键更新 -->
+	<update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseUnit">
+		update base_unit
+		<set>
+			<if test="unitname != null">
+				unitName = #{unitname,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsname != null">
+				unitSname = #{unitsname,jdbcType=VARCHAR},
+			</if>
+			<if test="unitnature != null">
+				unitNature = #{unitnature,jdbcType=VARCHAR},
+			</if>
+			<if test="unitmemcode != null">
+				unitMemCode = #{unitmemcode,jdbcType=VARCHAR},
+			</if>
+			<if test="unitregion != null">
+				unitRegion = #{unitregion,jdbcType=VARCHAR},
+			</if>
+			<if test="unittrade != null">
+				unitTrade = #{unittrade,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsort != null">
+				unitSort = #{unitsort,jdbcType=VARCHAR},
+			</if>
+			<if test="unitlinkman1 != null">
+				unitLinkMan1 = #{unitlinkman1,jdbcType=VARCHAR},
+			</if>
+			<if test="unitlinkman2 != null">
+				unitLinkMan2 = #{unitlinkman2,jdbcType=VARCHAR},
+			</if>
+			<if test="unitduty != null">
+				unitDuty = #{unitduty,jdbcType=VARCHAR},
+			</if>
+			<if test="unitaddress != null">
+				unitAddress = #{unitaddress,jdbcType=VARCHAR},
+			</if>
+			<if test="unitccount != null">
+				unitCcount = #{unitccount,jdbcType=VARCHAR},
+			</if>
+			<if test="unitaccount != null">
+				unitAccount = #{unitaccount,jdbcType=VARCHAR},
+			</if>
+			<if test="unitcable != null">
+				unitCable = #{unitcable,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsercall != null">
+				unitSerCall = #{unitsercall,jdbcType=VARCHAR},
+			</if>
+			<if test="unitlegal != null">
+				unitLegal = #{unitlegal,jdbcType=VARCHAR},
+			</if>
+			<if test="unitfanphone != null">
+				unitFanPhone = #{unitfanphone,jdbcType=VARCHAR},
+			</if>
+			<if test="unitzipcode != null">
+				unitZipCode = #{unitzipcode,jdbcType=VARCHAR},
+			</if>
+			<if test="unitsalaman != null">
+				unitSalaMan = #{unitsalaman,jdbcType=VARCHAR},
+			</if>
+			<if test="unitfax != null">
+				unitFax = #{unitfax,jdbcType=VARCHAR},
+			</if>
+			<if test="unitmobphone != null">
+				unitMobPhone = #{unitmobphone,jdbcType=VARCHAR},
+			</if>
+			<if test="unitemail != null">
+				unitEmail = #{unitemail,jdbcType=VARCHAR},
+			</if>
+			<if test="unitcustomer != null">
+				unitCustomer = #{unitcustomer,jdbcType=VARCHAR},
+			</if>
+			<if test="unithttp != null">
+				unitHttp = #{unithttp,jdbcType=VARCHAR},
+			</if>
+			<if test="unitcolladdress != null">
+				unitCollAddress = #{unitcolladdress,jdbcType=VARCHAR},
+			</if>
+			<if test="unitmainbiss != null">
+				unitMainBiss = #{unitmainbiss,jdbcType=VARCHAR},
+			</if>
+			<if test="unitpayway != null">
+				unitPayway = #{unitpayway,jdbcType=VARCHAR},
+			</if>
+			<if test="unitremark != null">
+				unitRemark = #{unitremark,jdbcType=VARCHAR},
+			</if>
+			<if test="createrid != null">
+				createrId = #{createrid,jdbcType=INTEGER},
+			</if>
+			<if test="createtime != null">
+				createTime = #{createtime,jdbcType=DATE},
+			</if>
+			<if test="updaterid != null">
+				updaterId = #{updaterid,jdbcType=INTEGER},
+			</if>
+			<if test="updatertime != null">
+				updaterTime = #{updatertime,jdbcType=DATE},
+			</if>
+			<if test="delstatus != null">
+				delStatus = #{delstatus,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.baseinfo.ZZBaseUnit">
+		update base_unit
+		set unitName = #{unitname,jdbcType=VARCHAR},
+		unitSname = #{unitsname,jdbcType=VARCHAR},
+		unitNature = #{unitnature,jdbcType=VARCHAR},
+		unitMemCode = #{unitmemcode,jdbcType=VARCHAR},
+		unitRegion = #{unitregion,jdbcType=VARCHAR},
+		unitTrade = #{unittrade,jdbcType=VARCHAR},
+		unitSort = #{unitsort,jdbcType=VARCHAR},
+		unitLinkMan1 = #{unitlinkman1,jdbcType=VARCHAR},
+		unitLinkMan2 = #{unitlinkman2,jdbcType=VARCHAR},
+		unitDuty = #{unitduty,jdbcType=VARCHAR},
+		unitAddress = #{unitaddress,jdbcType=VARCHAR},
+		unitCcount = #{unitccount,jdbcType=VARCHAR},
+		unitAccount = #{unitaccount,jdbcType=VARCHAR},
+		unitCable = #{unitcable,jdbcType=VARCHAR},
+		unitSerCall = #{unitsercall,jdbcType=VARCHAR},
+		unitLegal = #{unitlegal,jdbcType=VARCHAR},
+		unitFanPhone = #{unitfanphone,jdbcType=VARCHAR},
+		unitZipCode = #{unitzipcode,jdbcType=VARCHAR},
+		unitSalaMan = #{unitsalaman,jdbcType=VARCHAR},
+		unitFax = #{unitfax,jdbcType=VARCHAR},
+		unitMobPhone = #{unitmobphone,jdbcType=VARCHAR},
+		unitEmail = #{unitemail,jdbcType=VARCHAR},
+		unitCustomer = #{unitcustomer,jdbcType=VARCHAR},
+		unitHttp = #{unithttp,jdbcType=VARCHAR},
+		unitCollAddress = #{unitcolladdress,jdbcType=VARCHAR},
+		unitMainBiss = #{unitmainbiss,jdbcType=VARCHAR},
+		unitPayway = #{unitpayway,jdbcType=VARCHAR},
+		unitRemark = #{unitremark,jdbcType=VARCHAR},
+		createrId = #{createrid,jdbcType=INTEGER},
+		createTime = #{createtime,jdbcType=DATE},
+		updaterId = #{updaterid,jdbcType=INTEGER},
+		updaterTime = #{updatertime,jdbcType=DATE},
+		delStatus = #{delstatus,jdbcType=CHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

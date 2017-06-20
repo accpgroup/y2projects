@@ -17,5 +17,9 @@
       #{inReCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
   
+<!-- 查询入库商品明细 -->
+<select id="getInReGoods" parameterType="String" resultType="java.util.HashMap">
+
+</select>
 
 </mapper>

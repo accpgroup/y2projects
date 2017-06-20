@@ -61,4 +61,12 @@ public class RepositoryController {
 		List<String> billList = billSer.getAllBills(val);
 		return billList;
 	}
+	
+	//通过指定的入库单号获得当前商品明细
+	@RequestMapping("/getInReGoods")
+	@ResponseBody
+	public List<Map<String, Object>> getInReGoods(String inReCode){
+		
+		return null;
+	}
 }

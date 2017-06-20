@@ -2,7 +2,6 @@ package org.java.ssm.service.yangfeiservice.impl;
 
 import java.util.List;
 
-import org.apache.ibatis.builder.annotation.MapperAnnotationBuilder;
 import org.java.ssm.entity.BaseStore;
 import org.java.ssm.mapper.yangfeimapper.YFBaseStoreMapper;
 import org.java.ssm.service.yangfeiservice.YFBaseStoreService;

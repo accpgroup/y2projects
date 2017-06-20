@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.baseinfo.ZZBaseCostaccountMapper" >
+ <select id="findAll" resultType="org.java.ssm.entity.baseinfo.ZZBaseCostaccount">
+    select 
+    *
+    from base_costaccount order by id desc
+  </select>
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.baseinfo.ZZBaseCostaccount" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="caTouch" property="catouch" jdbcType="VARCHAR" />
+    <result column="caName" property="caname" jdbcType="VARCHAR" />
+    <result column="caRemark" property="caremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, caTouch, caName, caRemark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_costaccount
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_costaccount
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.baseinfo.ZZBaseCostaccount" >
+    insert into base_costaccount (id, caTouch, caName, 
+      caRemark)
+    values (#{id,jdbcType=INTEGER}, #{catouch,jdbcType=VARCHAR}, #{caname,jdbcType=VARCHAR}, 
+      #{caremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseCostaccount" >
+    insert into base_costaccount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="catouch != null" >
+        caTouch,
+      </if>
+      <if test="caname != null" >
+        caName,
+      </if>
+      <if test="caremark != null" >
+        caRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="catouch != null" >
+        #{catouch,jdbcType=VARCHAR},
+      </if>
+      <if test="caname != null" >
+        #{caname,jdbcType=VARCHAR},
+      </if>
+      <if test="caremark != null" >
+        #{caremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseCostaccount" >
+    update base_costaccount
+    <set >
+      <if test="catouch != null" >
+        caTouch = #{catouch,jdbcType=VARCHAR},
+      </if>
+      <if test="caname != null" >
+        caName = #{caname,jdbcType=VARCHAR},
+      </if>
+      <if test="caremark != null" >
+        caRemark = #{caremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.baseinfo.ZZBaseCostaccount" >
+    update base_costaccount
+    set caTouch = #{catouch,jdbcType=VARCHAR},
+      caName = #{caname,jdbcType=VARCHAR},
+      caRemark = #{caremark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -42,6 +42,38 @@
         <!-- ckeditor.js, load it only in the page you would like to use CKEditor (it's a heavy plugin to include it with the others!) -->
         <script src="<%=basePath%>/js/plugins/ckeditor/ckeditor.js"></script>
 
+       <!-- 弹框效果样式文件 -->
+       <style> 
+        .black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:500; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+        .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 12%; 
+            left: 12%; 
+            width: 76%; 
+            height: 76%; 
+            padding:0px; 
+            border: 2px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+    </style> 
+
+
+
         <!-- Load and execute javascript code used only in this page -->
         <script src="<%=basePath%>/js/pages/formsComponents.js"></script>
         <script>
@@ -73,8 +105,15 @@
             		$("#inreForm").submit();
             	});
             	
-            	
-            	
+            	$("[data-toggle='tooltip']").click(function(){
+            		var inReCode = $("[data-toggle='tooltip']").attr("id");
+            		//发送请求加载明细的商品信息
+            		$.getJSON("store/getInReGoods.do",{"inReCode":inReCode},function(data){
+            			
+            		});
+            		
+            		document.getElementById('light').style.display='block';
+            	});
             	
             	
             });
@@ -88,7 +127,6 @@
         	  $("#index").val(i);
         	  $("#inreForm").submit();
            }
-           
            
         </script>
 
@@ -236,7 +274,7 @@
                                                         </c:forEach>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="查看" class="btn btn-effect-ripple btn-xs btn-success"><i class="fa fa-eye"></i></a>
+                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="查看" class="btn btn-effect-ripple btn-xs btn-success" id="${info.inReCode }"><i class="fa fa-eye"></i></a>
                                                         <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a>
                                                     </td>
                                                     </tr>
@@ -293,7 +331,30 @@
                     </ul>
            </div>							
 			<input type="hidden" name="index" id="index" value="${requestScope.pageInfo.index}"/><!-- 用来保存当前页数 -->				
-		
+		   
+		   <!-- 查看明细弹框div -->
+		   <div id="light" class="white_content">
+		<div class="modal-header">
+		     <a1 class="modal-title" id="addTacticsItemModalLabel">入库单商品明细</a1>
+                <a style="padding-left: 750px" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">×</a>
+                </div>
+              <div class="modal-body">
+         
+                <div class="tl lh30 scrollspy-example sku-table-box">
+                  <table  class="table table-striped table-hover" style="margin-bottom:0">
+                    <thead class=" table-bordered">
+                      <tr>
+                        <th>序号</th>
+                        <th>商品编号</th>
+                        <th>商品名称</th>
+                        <th>入库数量</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody" style='font-weight:normal'></tbody>
+                  </table>
+                </div>
+                </div>
 	</form>
 </body>
 </html>

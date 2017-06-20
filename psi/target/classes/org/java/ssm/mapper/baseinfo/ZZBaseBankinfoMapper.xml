@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.ssm.mapper.baseinfo.ZZBaseBankinfoMapper" >
+   <select id="findAll" resultType="org.java.ssm.entity.baseinfo.ZZBaseBankinfo" >
+    select 
+    *
+    from base_bankinfo order by bfId desc
+  </select>
+  
+  <resultMap id="BaseResultMap" type="org.java.ssm.entity.baseinfo.ZZBaseBankinfo" >
+    <id column="bfId" property="bfid" jdbcType="INTEGER" />
+    <result column="bfCardNum" property="bfcardnum" jdbcType="VARCHAR" />
+    <result column="bfName" property="bfname" jdbcType="VARCHAR" />
+    <result column="bfMoney" property="bfmoney" jdbcType="DOUBLE" />
+    <result column="bfRemark" property="bfremark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bfId, bfCardNum, bfName, bfMoney, bfRemark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from base_bankinfo
+    where bfId = #{bfid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from base_bankinfo
+    where bfId = #{bfid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.ssm.entity.baseinfo.ZZBaseBankinfo" >
+    insert into base_bankinfo (bfId, bfCardNum, bfName, 
+      bfMoney, bfRemark)
+    values (#{bfid,jdbcType=INTEGER}, #{bfcardnum,jdbcType=VARCHAR}, #{bfname,jdbcType=VARCHAR}, 
+      #{bfmoney,jdbcType=DOUBLE}, #{bfremark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseBankinfo" >
+    insert into base_bankinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bfid != null" >
+        bfId,
+      </if>
+      <if test="bfcardnum != null" >
+        bfCardNum,
+      </if>
+      <if test="bfname != null" >
+        bfName,
+      </if>
+      <if test="bfmoney != null" >
+        bfMoney,
+      </if>
+      <if test="bfremark != null" >
+        bfRemark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bfid != null" >
+        #{bfid,jdbcType=INTEGER},
+      </if>
+      <if test="bfcardnum != null" >
+        #{bfcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="bfname != null" >
+        #{bfname,jdbcType=VARCHAR},
+      </if>
+      <if test="bfmoney != null" >
+        #{bfmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="bfremark != null" >
+        #{bfremark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.ssm.entity.baseinfo.ZZBaseBankinfo" >
+    update base_bankinfo
+    <set >
+      <if test="bfcardnum != null" >
+        bfCardNum = #{bfcardnum,jdbcType=VARCHAR},
+      </if>
+      <if test="bfname != null" >
+        bfName = #{bfname,jdbcType=VARCHAR},
+      </if>
+      <if test="bfmoney != null" >
+        bfMoney = #{bfmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="bfremark != null" >
+        bfRemark = #{bfremark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bfId = #{bfid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.ssm.entity.baseinfo.ZZBaseBankinfo" >
+    update base_bankinfo
+    set bfCardNum = #{bfcardnum,jdbcType=VARCHAR},
+      bfName = #{bfname,jdbcType=VARCHAR},
+      bfMoney = #{bfmoney,jdbcType=DOUBLE},
+      bfRemark = #{bfremark,jdbcType=VARCHAR}
+    where bfId = #{bfid,jdbcType=INTEGER}
+  </update>
+</mapper>
