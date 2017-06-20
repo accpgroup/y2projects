@@ -12,6 +12,7 @@ import org.java.ssm.service.SysCodeRuleService;
 import org.java.ssm.service.SysDictionaryTypeService;
 import org.java.ssm.service.yangfeiservice.YFBaseStoreService;
 import org.java.ssm.service.yangfeiservice.YFBillService;
+import org.java.ssm.service.yangfeiservice.YFInReGoodsService;
 import org.java.ssm.service.yangfeiservice.YFSysUserService;
 import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,8 @@ public class RepositoryController {
 	private YFSysUserService userSer;   //调用用户表服务层对象
 	@Resource(name="yfBillSer")
 	private YFBillService billSer;
+	@Autowired
+	private YFInReGoodsService yfgoodsSer;
 	
 	//获得所有可用仓库信息
 	@RequestMapping("/getReps.do")
@@ -66,7 +69,7 @@ public class RepositoryController {
 	@RequestMapping("/getInReGoods")
 	@ResponseBody
 	public List<Map<String, Object>> getInReGoods(String inReCode){
-		
-		return null;
+		List<Map<String, Object>> goodsList = yfgoodsSer.getInReGoods(inReCode);
+		return goodsList;
 	}
 }

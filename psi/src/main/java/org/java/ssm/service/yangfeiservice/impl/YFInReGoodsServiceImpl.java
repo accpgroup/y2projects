@@ -1,6 +1,7 @@
 package org.java.ssm.service.yangfeiservice.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.java.ssm.entity.InReGoods;
 import org.java.ssm.mapper.yangfeimapper.YFInReGoodsMapper;
@@ -21,6 +22,11 @@ public class YFInReGoodsServiceImpl implements YFInReGoodsService {
 			goodsMapper.insert(inReGoods);
 		}
 		return 0;
+	}
+
+	@Override
+	public List<Map<String, Object>> getInReGoods(String code) {
+		return goodsMapper.getInReGoods(code);
 	}
 	
 	

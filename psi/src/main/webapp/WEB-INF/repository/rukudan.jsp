@@ -102,6 +102,7 @@
             	});
             	 
             	$("#page_count").change(function(){
+            		$("#index").val(1);
             		$("#inreForm").submit();
             	});
             	
@@ -109,10 +110,22 @@
             		var inReCode = $("[data-toggle='tooltip']").attr("id");
             		//发送请求加载明细的商品信息
             		$.getJSON("store/getInReGoods.do",{"inReCode":inReCode},function(data){
-            			
+            			$.each(data,function(index,val){
+            				$("#tbody").empty();
+            			var tr	="<tr>";
+                            tr +="<th>"+(index+1)+"</th>";
+                            tr +="<th>"+val.gdId+"</th>";
+                            tr +="<th>"+val.gdName+"</th>";
+                            tr +="<th>"+val.gdMemCode+"</th>";
+                            tr +="<th>"+val.gdType+"</th>";
+                            tr +="<th>"+val.gdAmount+"</th>";
+                            tr +="<th>"+val.gdRemark+"</th>";
+                            tr +="</tr>";
+                            $(tr).appendTo($("#tbody")); 
+            			});
+            			//弹出模式化窗口
+                		document.getElementById('light').style.display='block';
             		});
-            		
-            		document.getElementById('light').style.display='block';
             	});
             	
             	
@@ -275,7 +288,7 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <a href="javascript:void(0)" data-toggle="tooltip" title="查看" class="btn btn-effect-ripple btn-xs btn-success" id="${info.inReCode }"><i class="fa fa-eye"></i></a>
-                                                        <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a>
+                                                        <!-- <a href="javascript:void(0)" data-toggle="tooltip" title="编辑" class="btn btn-effect-ripple btn-xs btn-danger"><i class="fa fa-pencil"></i></a> -->
                                                     </td>
                                                     </tr>
                                             </c:forEach>
@@ -347,6 +360,8 @@
                         <th>序号</th>
                         <th>商品编号</th>
                         <th>商品名称</th>
+                        <th>商品助记码</th>
+                        <th>商品类型</th>
                         <th>入库数量</th>
                         <th>备注</th>
                       </tr>
